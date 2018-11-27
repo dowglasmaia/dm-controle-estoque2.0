@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+	template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="titulo">Saída de Produtos</ui:define>
+
+	<!-- Chamando o Metodo Inicializar, Antes da Pagina ser carregada  -->
+	<f:metadata>
+		<f:viewParam
+			name="Linha Apenas para resolvendo o excesso de inicializção, porque Não sei explicar rsrs"></f:viewParam>
+		<f:event listener="#{produtoService.ListarTodos()}"
+			type="preRenderView"></f:event>
+	</f:metadata>
+
+	<!-- Inicio do Conteudo -->
+	<ui:define name="conteudo">
+		<h:form id="frmSd_Produtos">
+			<h:panelGroup>
+				<!-- Deixando o Formulario Responsivel -->
+				<div class="ui-fluid">
+					<p:messages id="msg" autoUpdate="true"/>
+
+					<p:fieldset legend="Produtos">
+						<p:dataTable id="tblProd" value="#{produtoService.produtos}" var="p"
+							paginatorPosition="top" paginator="true" rows="10"
+							emptyMessage="Nenhum Registro Encontrado!">
+
+							<p:column headerText="SKU" sortBy="#{p.SKU}" filterBy="#{p.SKU}"
+								style="width: 80px">
+								<h:outputText value="#{p.SKU}" />
+							</p:column>
+
+							<p:column headerText="Descrição" style="width: 150px">
+								<h:outputText value="#{p.descricao}" />
+							</p:column>
+
+							<p:column headerText="Marca" style="width: 100px">
+								<h:outputText value="#{p.marca}" />
+							</p:column>
+
+							<p:column headerText="Fornecedor" style="width: 100px">
+								<h:outputText value="#{p.fornecedor.nome}" />
+							</p:column>
+
+							<p:column headerText="Valor de Custo" style="width: 80px">
+								<h:outputText value="#{p.valorCusto}" />
+							</p:column>
+
+							<p:column headerText="Estoque Atual" style="width: 80px">
+								<h:outputText value="#{p.estoqueAtual}" />
+							</p:column>
+
+							<p:column headerText="Ações" style="width: 80px">
+								<p:commandButton icon="ui-icon-refresh"
+									update=":frmSd_Produtos:pnlProduto :frmSd_Produtos:msg"
+									oncomplete="PF('proDialog').show()" title="Atualizar">
+									<f:setPropertyActionListener value="#{p}" target="#{produtoService.produto}"/>									
+								</p:commandButton>
+							</p:column>
+						</p:dataTable>
+					</p:fieldset>
+
+					<!-- Dialog de Atualização dos Dados -->
+					<p:dialog header="Saída de Produtos" widgetVar="proDialog"
+						modal="true" closable="true" resizable="false">
+
+						<p:outputPanel id="pnlProduto" style=" width:400px">
+							<p:panelGrid columns="2"
+								columnClasses="ui-grid-col-3, ui-grid-col-13" layout="grid"
+								styleClass="ui-paneilgrid-blak">
+
+								<p:outputLabel value="SKU:" />
+								<h:outputText value="#{produtoService.produto.SKU}" />
+
+								<p:outputLabel value="Descrição:" />
+								<h:outputText value="#{produtoService.produto.descricao}"
+									style="width: 70px" />
+
+								<p:outputLabel value="Estoque Atual: " />
+								<h:outputText value="#{produtoService.produto.estoqueAtual}" />
+
+								<p:outputLabel for="saida" value="Qtda Saída: " />
+								<p:inputText id="saida" value="#{produtoService.qtdaSaida}"
+									placeholder="Saída" size="10">
+									<f:convertNumber minIntegerDigits="1" type="number" />
+								</p:inputText>
+
+								<f:facet name="footer">
+									<p:commandButton value="Finalizar Saída"
+										actionListener="#{produtoService.baixarEstoque}"
+										oncomplete="PF('proDialog').hide()" update=":frmSd_Produtos:tblProd" />
+
+									<p:commandButton value="Cancelar"
+										oncomplete="PF('proDialog').hide()" />
+								</f:facet>
+							</p:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+				</div>
+			</h:panelGroup>
+		</h:form>
+	</ui:define>
+</ui:composition>
