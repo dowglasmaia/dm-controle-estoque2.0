@@ -12,7 +12,7 @@ import org.store.entity.Fornecedor;
  * */
 
 @Stateless
-public class FornecedorDAO extends GenericDao<Fornecedor> {
+public class FornecedorDAO extends GenericDao<Fornecedor>{
 	private static final long serialVersionUID = 1L;
 
 	public FornecedorDAO() {

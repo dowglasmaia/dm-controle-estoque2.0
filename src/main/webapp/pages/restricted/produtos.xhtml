@@ -14,9 +14,8 @@
 		<f:viewParam
 			name="Linha Apenas para resolvendo o excesso de inicializção, porque Não sei explicar rsrs" />
 
-		<f:event listener="#{produtoService.listarFornecedores()}"
+		<f:event listener="#{produtoBean.listarFornecedores()}"
 			type="preRenderView">
-
 		</f:event>
 	</f:metadata>
 
@@ -35,45 +34,45 @@
 							styleClass="ui-paneilgrid-blak">
 
 							<h:outputText />
-							<h:inputHidden value="#{produtoService.produto.id}" />
+							<h:inputHidden value="#{produtoBean.produto.id}" />
 
 							<p:outputLabel for="sku" value="SKU" />
 							<p:inputText id="sku" size="10" placeholder="SKU" maxlength="5"
-								value="#{produtoService.produto.SKU}" />
+								value="#{produtoBean.produto.SKU}" />
 
 							<p:outputLabel for="desc" value="Descrição" />
 							<p:inputText id="desc" size="50" placeholder="Descrição"
-								value="#{produtoService.produto.descricao}" />
+								value="#{produtoBean.produto.descricao}" />
 
 							<p:outputLabel for="marca" value="Marca" />
 							<p:inputText id="marca" size="50" placeholder="Marca"
-								value="#{produtoService.produto.marca}" />
+								value="#{produtoBean.produto.marca}" />
 
 							<p:outputLabel for="fornc" value="Fornecedor" />
 							<p:selectOneMenu id="fornc" filter="true"
-								value="#{produtoService.produto.fornecedor}"
+								value="#{produtoBean.produto.fornecedor}"
 								converter="omnifaces.SelectItemsConverter">
 								<f:selectItem itemLabel="Selecione um Fornecedor"
 									noSelectionOption="true" />
 
-								<f:selectItems id="itForn" value="#{produtoService.fornecedores}"
+								<f:selectItems id="itForn" value="#{produtoBean.fornecedores}"
 									var="forn" itemLabel="#{forn.nome}" itemValue="#{forn}" />
 							</p:selectOneMenu>
 
 							<p:outputLabel for="qtda" value="Quantidade" />
 							<p:inputText id="qtda" size="10" placeholder="Quantidade"
-								value="#{produtoService.quantidade}" />
+								value="#{produtoBean.quantidade}" />
 
 							<p:outputLabel for="vlrCusto" value="Valor de Custo" />
 							<p:inputText id="vlrCusto" size="20" placeholder="0.00"
 								maxlength="20" styleClass="moeda"
-								value="#{produtoService.produto.valorCusto}">
+								value="#{produtoBean.produto.valorCusto}">
 								<f:convertNumber maxFractionDigits="2" />
 							</p:inputText>
 
 							<p:outputLabel for="estoque" value="Estoque Atual" />
 							<h:outputText id="estoque"
-								value="#{produtoService.produto.estoqueAtual}" />
+								value="#{produtoBean.produto.estoqueAtual}" />
 
 
 						</p:panelGrid>
@@ -83,11 +82,11 @@
 				<!-- Butões -->
 				<div align="right" style="margin-top: 5px">
 					<p:commandButton value="Novo" icon="ui-icon-plus"
-						actionListener="#{produtoService.novo}"
+						actionListener="#{produtoBean.novo}"
 						update="frmProdutos:gridProdutos" />
 
 					<p:commandButton value="Salvar" icon="ui-icon-disk"
-						actionListener="#{produtoService.saveOrUpdate}"
+						actionListener="#{produtoBean.saveOrUpdate}"
 						update="frmProdutos:gridProdutos frmProdutos:msg" />
 
 					<p:commandButton value="Cancelar" icon="ui-icon-trash"

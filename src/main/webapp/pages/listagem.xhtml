@@ -14,7 +14,7 @@
 	<f:metadata>
 		<f:viewParam
 			name="Linha Apenas para resolvendo o excesso de inicializção, porque Não sei explicar rsrs"></f:viewParam>
-		<f:event listener="#{produtoService.ListarTodos()}"
+		<f:event listener="#{produtoBean.ListarTodos()}"
 			type="preRenderView"></f:event>
 	</f:metadata>
 
@@ -27,7 +27,7 @@
 					<p:messages id="msg" autoUpdate="true"/>
 
 					<p:fieldset legend="Produtos">
-						<p:dataTable id="tblProd" value="#{produtoService.produtos}" var="p"
+						<p:dataTable id="tblProd" value="#{produtoBean.produtos}" var="p"
 							paginatorPosition="top" paginator="true" rows="10"
 							emptyMessage="Nenhum Registro Encontrado!">
 
@@ -60,7 +60,7 @@
 								<p:commandButton icon="ui-icon-refresh"
 									update=":frmSd_Produtos:pnlProduto :frmSd_Produtos:msg"
 									oncomplete="PF('proDialog').show()" title="Atualizar">
-									<f:setPropertyActionListener value="#{p}" target="#{produtoService.produto}"/>									
+									<f:setPropertyActionListener value="#{p}" target="#{produtoBean.produto}"/>									
 								</p:commandButton>
 							</p:column>
 						</p:dataTable>
@@ -76,24 +76,24 @@
 								styleClass="ui-paneilgrid-blak">
 
 								<p:outputLabel value="SKU:" />
-								<h:outputText value="#{produtoService.produto.SKU}" />
+								<h:outputText value="#{produtoBean.produto.SKU}" />
 
 								<p:outputLabel value="Descrição:" />
-								<h:outputText value="#{produtoService.produto.descricao}"
+								<h:outputText value="#{produtoBean.produto.descricao}"
 									style="width: 70px" />
 
 								<p:outputLabel value="Estoque Atual: " />
-								<h:outputText value="#{produtoService.produto.estoqueAtual}" />
+								<h:outputText value="#{produtoBean.produto.estoqueAtual}" />
 
 								<p:outputLabel for="saida" value="Qtda Saída: " />
-								<p:inputText id="saida" value="#{produtoService.qtdaSaida}"
+								<p:inputText id="saida" value="#{produtoBean.qtdaSaida}"
 									placeholder="Saída" size="10">
 									<f:convertNumber minIntegerDigits="1" type="number" />
 								</p:inputText>
 
 								<f:facet name="footer">
 									<p:commandButton value="Finalizar Saída"
-										actionListener="#{produtoService.baixarEstoque}"
+										actionListener="#{produtoBean.baixarEstoque}"
 										oncomplete="PF('proDialog').hide()" update=":frmSd_Produtos:tblProd" />
 
 									<p:commandButton value="Cancelar"

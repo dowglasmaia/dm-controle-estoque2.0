@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.inject.Model;
 import javax.faces.view.ViewScoped;
@@ -25,7 +24,7 @@ import org.store.entity.Produto;
 
 @Model
 @ViewScoped
-public class ProdutoService implements Serializable {
+public class ProdutoBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
@@ -89,8 +88,6 @@ public class ProdutoService implements Serializable {
 	}
 
 	// Listar Fornecedores
-
-	@PostConstruct
 	public void listarFornecedores() {
 		try {
 			this.fornecedores = fDao.findAll();

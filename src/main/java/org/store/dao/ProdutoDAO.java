@@ -11,7 +11,7 @@ import org.store.entity.Produto;
  * */
 
 @Stateless
-public class ProdutoDAO extends GenericDao<Produto> {
+public class ProdutoDAO extends GenericDao<Produto>{
 	private static final long serialVersionUID = 1L;
 
 	public ProdutoDAO() {

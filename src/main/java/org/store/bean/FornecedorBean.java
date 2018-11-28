@@ -22,7 +22,7 @@ import org.store.entity.Fornecedor;
 
 @Model
 @ViewScoped
-public class FornecedorService implements Serializable {
+public class FornecedorBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EJB

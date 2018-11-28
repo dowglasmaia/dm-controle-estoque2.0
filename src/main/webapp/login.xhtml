@@ -14,21 +14,22 @@
 
 <h:body>
 	<b:container>
-		<p:messages autoUpdate="true" />
 		<h:form id="frmlogin">
-
+		<h:inputHidden value = "#{usuarioBean.usuario.matricula}"/>
+			<p:messages autoUpdate="true" />
 
 			<p:panelGrid columns="2" layout="grid">
 				<f:facet name="header"> Informe seu CPF para entra no Sistema</f:facet>
 				<p:outputLabel value="CPF" />
-				<p:inputText size="40" />
+				<p:inputText value="#{usuarioBean.cpf}" />
 
 				<p:outputLabel value="Senha" />
-				<p:inputText size="40" />
+				<p:inputText value="#{usuarioBean.senha}" />
 
 
 			</p:panelGrid>
-			<p:commandButton value="Entra" icon="ui-icon-star" />
+			<p:commandButton value="Entra" icon="ui-icon-star"
+				action="#{usuarioBean.logar()}" />
 
 		</h:form>
 

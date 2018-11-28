@@ -5,14 +5,13 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui" 
-	xmlns:b="http://bootsfaces.net/ui">
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
 
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	
+
 	<h:outputScript library="js" name="jquery.maskMoney.js" />
 
 
@@ -20,23 +19,26 @@
 </h:head>
 
 <h:body>
-	<b:container >
+	<b:container>
 		<h:form id="frmMenu">
-		
-			<b:navBar brand="Sistema de Estoque" brandHref="#" fluid="true" >
+
+			<b:navBar brand="Sistema de Estoque" brandHref="#" fluid="true">
 				<b:navbarLinks>
-					<b:navLink value="Home" outcome="/pages/index" />
+					<b:navLink value="Home" outcome="/pages/index.xhtml" />
 					<b:dropMenu value="Produtos">
-						<b:navLink value="Entrada" outcome="/pages/restricted/produtos" />
-						<b:navLink value="Saída" outcome="/pages/listagem" />
+						<b:navLink value="Entrada"
+							outcome="/pages/restricted/produtos.xhtml" />
+						<b:navLink value="Saída" outcome="/pages/listagem.xhtml" />
 					</b:dropMenu>
-					<b:navLink value="Fornecedor" outcome="/pages/restricted/fornecedor" />
-					
+					<b:navLink value="Fornecedor"
+						outcome="/pages/restricted/fornecedor.xhtml" />
+
 				</b:navbarLinks>
 
 				<b:navbarLinks pull="right" style-class="hidden-xs">
-					<b:navLink value="Consultas" outcome="/pages/listagem" />
-					<b:navLink value="Sair" outcome="/pages/index" />
+					<b:navLink value="Consultas" outcome="/pages/listagem.xhtml" />
+					<b:label value="#{usuarioBean.usuario.nome}"/>
+					<b:navLink value="Sair" action-listener="#{usuarioBean.logout()}" />
 				</b:navbarLinks>
 			</b:navBar>
 		</h:form>
@@ -44,9 +46,9 @@
 		<ui:insert name="conteudo">
 
 		</ui:insert>
-		
+
 		<!--script para configura Capos de Moeda que usam a Class (moeda chamar no componete usando styleClass(moeda) -->
-	<script>
+		<script>
 		function configurarMoeda() {
 			$(".moeda").maskMoney({
 				decimal : ",",

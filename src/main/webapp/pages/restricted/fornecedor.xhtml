@@ -7,7 +7,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
 	template="/WEB-INF/template/template.xhtml">
-<!-- 
+	<!-- 
  * Autor: Dowglas Maia
  * Skype: live:dowglasmaia
  * E-mail:dowglasmaia@live.com
@@ -18,50 +18,46 @@
 	<ui:define name="conteudo">
 
 		<h:form id="frmFornecedor">
-			<div class="ui-fluid">
-				<p:messages id="msg" autoUpdate="true" />
+			<h:panelGroup>
+				<div class="ui-fluid">
+					<p:messages id="msg" autoUpdate="true" />
 
-				<p:fieldset legend="Cadastro de Fornecedores">
-					<p:panelGrid columns="2"
-						columnClasses="ui-grid-col-2, ui-grid-col-13" layout="grid"
-						styleClass="ui-paneilgrid-blak">
-						<h:outputText />
-						<h:inputHidden value="#{fornecedorService.fornecedor.id}" />
+					<p:fieldset legend="Cadastro de Fornecedores">
+						<p:panelGrid columns="2"
+							columnClasses="ui-grid-col-2, ui-grid-col-13" layout="grid"
+							styleClass="ui-paneilgrid-blak">
+							<h:outputText />
+							<h:inputHidden value="#{fornecedorBean.fornecedor.id}" />
 
-						<p:outputLabel for="nome" value="Nome" />
-						<p:inputText id="nome" size="50"
-							value="#{fornecedorService.fornecedor.nome}" />
+							<p:outputLabel for="nome" value="Nome" />
+							<p:inputText id="nome" size="50"
+								value="#{fornecedorBean.fornecedor.nome}" />
 
-						<p:outputLabel for="tel" value="Telefone" />
-						<p:inputText id="tel" size="20"
-							value="#{fornecedorService.fornecedor.tefelefone}" />
+							<p:outputLabel for="tel" value="Telefone" />
+							<p:inputText id="tel" size="20"
+								value="#{fornecedorBean.fornecedor.tefelefone}" />
 
-						<p:outputLabel for="email" value="email" />
-						<p:inputText size="50"
-							value="#{fornecedorService.fornecedor.email}" />
+							<p:outputLabel for="email" value="email" />
+							<p:inputText size="50" value="#{fornecedorBean.fornecedor.email}" />
 
-						<p:outputLabel value="Representante" />
-						<p:inputText size="50" id="email"
-							value="#{fornecedorService.fornecedor.representatne}" />
+							<p:outputLabel value="Representante" />
+							<p:inputText size="50" id="email"
+								value="#{fornecedorBean.fornecedor.representatne}" />
 
-					</p:panelGrid>
-
-
-
-				</p:fieldset>
+						</p:panelGrid>
+					</p:fieldset>
+				</div>
 				<!-- Butões -->
 				<div align="right" style="margin-top: 5px">
 					<p:commandButton value="Novo" icon="ui-icon-plus" />
 
 					<p:commandButton value="Salvar" icon="ui-icon-disk"
-						actionListener="#{fornecedorService.saveOrUpdate}" />
+						actionListener="#{fornecedorBean.saveOrUpdate}" />
 
 					<p:commandButton value="Cancelar" icon="ui-icon-trash" />
 				</div>
 
-			</div>
-
-
+			</h:panelGroup>
 		</h:form>
 
 	</ui:define>
