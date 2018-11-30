@@ -16,39 +16,9 @@
 
 
 	<title><ui:insert name="titulo"></ui:insert></title>
-</h:head>
 
-<h:body>
-	<b:container>
-		<h:form id="frmMenu">
-
-			<b:navBar brand="Sistema de Estoque" brandHref="#" fluid="true">
-				<b:navbarLinks>
-					<b:navLink value="Home" outcome="/pages/index.xhtml" />
-					<b:dropMenu value="Produtos">
-						<b:navLink value="Entrada"
-							outcome="/pages/restricted/produtos.xhtml" />
-						<b:navLink value="Saída" outcome="/pages/listagem.xhtml" />
-					</b:dropMenu>
-					<b:navLink value="Fornecedor"
-						outcome="/pages/restricted/fornecedor.xhtml" />
-
-				</b:navbarLinks>
-
-				<b:navbarLinks pull="right" style-class="hidden-xs">
-					<b:navLink value="Consultas" outcome="/pages/listagem.xhtml" />
-					<b:label value="#{usuarioBean.usuario.nome}"/>
-					<b:navLink value="Sair" action-listener="#{usuarioBean.logout()}" />
-				</b:navbarLinks>
-			</b:navBar>
-		</h:form>
-
-		<ui:insert name="conteudo">
-
-		</ui:insert>
-
-		<!--script para configura Capos de Moeda que usam a Class (moeda chamar no componete usando styleClass(moeda) -->
-		<script>
+	<!--script para configura Capos de Moeda que usam a Class (moeda chamar no componete usando styleClass(moeda) -->
+	<script>
 		function configurarMoeda() {
 			$(".moeda").maskMoney({
 				decimal : ",",
@@ -61,6 +31,40 @@
 			configurarMoeda();
 		});
 	</script>
+</h:head>
+
+<h:body>
+	<b:container>
+		<h:form id="frmMenu">
+
+			<b:navBar brand="Gestão de Estoque" brandHref="#" fluid="true">
+				<b:navbarLinks>
+					<b:navLink value="Home" outcome="/pages/index.xhtml" />
+					<b:dropMenu value="Produtos">
+						<b:navLink value="Entrada" outcome="/pages/produtos.xhtml" />
+						<b:navLink value="Saída" outcome="/pages/listagem.xhtml" />
+					</b:dropMenu>
+					<b:navLink value="Fornecedor" outcome="/pages/fornecedor.xhtml" />
+
+				</b:navbarLinks>
+
+				<b:navbarLinks pull="right" style-class="hidden-xs">
+					<b:label text="Usuario Logado" value="#{usuarioBean.usuario.nome}" />
+					<b:navLink value="Consultas" outcome="/pages/listagem.xhtml" />
+
+
+					<h:commandLink action="#{usuarioBean.logout()}" value="Sair" />
+
+				</b:navbarLinks>
+
+
+			</b:navBar>
+		</h:form>
+
+		<ui:insert name="conteudo">
+
+		</ui:insert>
+
 	</b:container>
 </h:body>
 </html>

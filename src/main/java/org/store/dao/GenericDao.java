@@ -2,6 +2,8 @@ package org.store.dao;
 
 import java.util.List;
 
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -9,8 +11,14 @@ import javax.transaction.Transactional;
 
 import org.store.interfaces.GenericDAO;
 
+/**
+ * @TransactionManagement(TransactionManagementType.CONTAINER)”. 
+ * Esta anotação define que a classe possui todas suas transações gerenciadas pelo container.
+ */
+ 
 @SuppressWarnings("serial")
-public class GenericDao<E> implements GenericDAO<E>{
+@TransactionManagement(TransactionManagementType.CONTAINER) 
+public class GenericDao<E> implements GenericDAO<E> {
 
 	@PersistenceContext
 	private EntityManager em;
