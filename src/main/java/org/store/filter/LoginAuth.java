@@ -8,7 +8,7 @@ import javax.servlet.http.*;
 
 import org.store.entity.Usuario;
 
-@WebFilter("/login.xhtml")
+//@WebFilter("/login.xhtml")
 public class LoginAuth implements Filter {
 
 	public LoginAuth() {

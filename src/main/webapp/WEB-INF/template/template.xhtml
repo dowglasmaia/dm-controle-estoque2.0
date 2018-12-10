@@ -18,7 +18,7 @@
 	<!-- Bootstrap -->
 	<h:outputStylesheet library="css" name="bootstrap.min.css" />
 	<h:outputScript library="js" name="bootstrap.min.js" />
-	
+
 	<!-- meu css e js -->
 	<h:outputStylesheet library="css" name="estilo.css" />
 	<h:outputScript library="js" name="jquery.maskMoney.js" />
@@ -48,10 +48,8 @@
 
 			<b:navBar brand="Gestão de Estoque" brandHref="#" fluid="true">
 				<b:navbarLinks>
-					<b:dropMenu value="Produtos">
-						<b:navLink value="Entrada" outcome="/pages/produtos.xhtml" />
-						<b:navLink value="Saída" outcome="/pages/listagem.xhtml" />
-					</b:dropMenu>
+					<b:navLink value="Entrada" outcome="/pages/produtos.xhtml" />
+					<b:navLink value="Saída" outcome="/pages/listagem.xhtml" />
 					<b:navLink value="Fornecedor" outcome="/pages/fornecedor.xhtml" />
 
 				</b:navbarLinks>

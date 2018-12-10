@@ -17,47 +17,75 @@
 
 	<ui:define name="conteudo">
 
-		<h:form id="frmFornecedor">
-			<h:panelGroup>
-				<div class="ui-fluid">
-					<p:messages id="msg" autoUpdate="true" />
+	<p:growl autoUpdate="true" />
+		<h:form id="frmFornecedor" styleClass="form-horizontal">
+			
 
-					<p:fieldset legend="Cadastro de Fornecedores">
-						<p:panelGrid columns="2"
-							columnClasses="ui-grid-col-2, ui-grid-col-13" layout="grid"
-							styleClass="ui-paneilgrid-blak">
-							<h:outputText />
-							<h:inputHidden value="#{fornecedorBean.fornecedor.id}" />
-
-							<p:outputLabel for="nome" value="Nome" />
-							<p:inputText id="nome" size="50"
-								value="#{fornecedorBean.fornecedor.nome}" />
-
-							<p:outputLabel for="tel" value="Telefone" />
-							<p:inputText id="tel" size="20"
-								value="#{fornecedorBean.fornecedor.tefelefone}" />
-
-							<p:outputLabel for="email" value="email" />
-							<p:inputText size="50" value="#{fornecedorBean.fornecedor.email}" />
-
-							<p:outputLabel value="Representante" />
-							<p:inputText size="50" id="email"
-								value="#{fornecedorBean.fornecedor.representatne}" />
-
-						</p:panelGrid>
-					</p:fieldset>
-				</div>
-				<!-- Butões -->
-				<div align="right" style="margin-top: 5px">
-					<p:commandButton value="Novo" icon="ui-icon-plus" />
-
-					<p:commandButton value="Salvar" icon="ui-icon-disk"
-						actionListener="#{fornecedorBean.saveOrUpdate}" />
-
-					<p:commandButton value="Cancelar" icon="ui-icon-trash" />
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h4>Cadastro de Fornecedores</h4>
 				</div>
 
-			</h:panelGroup>
+				<div class="panel-body row">
+					<div class="form-group">
+						<div class="col-sm-2 control-label">
+							<h:outputLabel for="nome" value="Nome" />
+						</div>
+
+						<div class="col-sm-10">
+							<p:inputText id="nome" value="#{fornecedorBean.fornecedor.nome}"
+								styleClass="form-control" placeholder="Nome do Fornecedor" required="true" requiredMessage="campo nome obrigatório" />
+						</div>
+					</div> <!-- /form-group -->
+					
+					<div class="form-group">
+						<div class="col-sm-2 control-label">
+							<h:outputLabel for="email" value="e-Mail" />
+						</div>
+						
+						<div class="col-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon">@</span>
+							<p:inputText id="email" value="#{fornecedorBean.fornecedor.email}"
+								styleClass="form-control" placeholder="email" required="true" requiredMessage="campo e-Mail obrigatório"/>
+						</div>
+						</div>
+					</div> <!-- /form-group -->
+					
+					<div class="form-group">
+						<div class="col-sm-2 control-label">
+							<h:outputLabel for="representante" value="Representante" />
+						</div>
+
+						<div class="col-sm-10">
+							<p:inputText id="representante" value="#{fornecedorBean.fornecedor.representatne}"
+								styleClass="form-control" placeholder="Nome do Representante" required="true" requiredMessage="Nome do Representante é obrigatório" />
+						</div>
+					</div> <!-- /form-group -->
+					
+					<div class="form-group">
+						<div class="col-sm-2 control-label">
+							<h:outputLabel for="contato" value="Telefone" />
+						</div>
+
+						<div class="col-sm-10">
+							<p:inputText id="contato" value="#{fornecedorBean.fornecedor.telefone}"
+								styleClass="form-control" placeholder="Telefone para contato" required="true" requiredMessage="campo telefone é obrigatório" validatorMessage="true"/>
+						</div>
+					</div> <!-- /form-group -->
+					
+					
+						
+					<div class="btn-gp">
+						<h:commandButton  action="#{fornecedorBean.saveOrUpdate()}" value="Salvar" styleClass="btn btn-primary bt"/>
+						
+						<h:commandButton  action="#{fornecedorBean.novo()}" value="Cancelar" styleClass="btn btn-warning bt" />
+					</div>
+				</div>
+					
+			</div>
+
+
 		</h:form>
 
 	</ui:define>

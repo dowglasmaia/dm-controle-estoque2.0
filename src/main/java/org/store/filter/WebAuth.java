@@ -8,7 +8,7 @@ import javax.servlet.http.*;
 
 import org.store.entity.Usuario;
 
-@WebFilter("/pages/*")
+//@WebFilter("/pages/*")
 public class WebAuth implements Filter {
 
 	public WebAuth() {

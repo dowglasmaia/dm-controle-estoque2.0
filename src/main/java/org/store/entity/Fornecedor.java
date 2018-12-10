@@ -36,7 +36,7 @@ public class Fornecedor implements Serializable {
 	private String email;
 
 	@Column(length = 20)
-	private String tefelefone;
+	private String telefone;
 
 	@Column(length = 50)
 	private String representatne;
@@ -77,12 +77,12 @@ public class Fornecedor implements Serializable {
 		this.email = email;
 	}
 
-	public String getTefelefone() {
-		return tefelefone;
+	public String getTelefone() {
+		return telefone;
 	}
 
-	public void setTefelefone(String tefelefone) {
-		this.tefelefone = tefelefone;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	public String getRepresentatne() {

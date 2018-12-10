@@ -23,14 +23,26 @@ body{ background:linear-gradient(50deg,#708090,#4682B4);
   
 }
 
-.form-group {
-  margin-bottom:10px;
+.form-group { 
+  padding: 0px 40px;
+  
 }
 
 
-
-
-.btn.btn-primary {
+.btn-gp{
+	text-align: right;
+	font-size: 20px;	
+	padding: 10px 40px;
+}
+.bt{
+	margin: 5px;
+}
+.panel-body{
+	margin: 10px auto;
+	
+	
+}
+.btn-logar {
   background: #f0ad4e none repeat scroll 0 0;
   border-color: #f0ad4e;
   color: #ffffff;

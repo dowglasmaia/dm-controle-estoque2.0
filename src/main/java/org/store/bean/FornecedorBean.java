@@ -33,14 +33,20 @@ public class FornecedorBean implements Serializable {
 
 	private List<Fornecedor> fornecedores = new ArrayList<>();
 
+	public void novo() {
+		fornecedor = new Fornecedor();
+	}
+
 	// Salvar ou Atualiza de acordo com a Regra
 	public void saveOrUpdate() {
 		try {
 			if (this.fornecedor.getId() == null) {
 				fDao.save(fornecedor);
+				novo();
 				Messages.addGlobalInfo("Fornecedor Salvo com Sucesso!");
 			} else {
 				fDao.update(fornecedor);
+				novo();
 				Messages.addGlobalInfo("Fornecedor Atualizado com Sucesso!");
 			}
 		} catch (Exception e) {
@@ -56,7 +62,7 @@ public class FornecedorBean implements Serializable {
 		} catch (Exception e) {
 			Messages.addGlobalError("Erro ao Realizar Consulta de Fornecedores!");
 			e.printStackTrace();
-		}	
+		}
 	}
 
 	// Getters e Setters
