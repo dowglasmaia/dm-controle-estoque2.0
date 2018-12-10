@@ -32,7 +32,7 @@ public class LoginAuth implements Filter {
 		if (usuario == null) {
 			chain.doFilter(request, response);
 		} else {
-			res.sendRedirect(req.getContextPath() + "/pages/index.xhtml");
+			res.sendRedirect(req.getContextPath() + "/pages/listagem.xhtml");
 		}
 
 	}

@@ -13,17 +13,12 @@ public class UsuarioDAO extends GenericDao<Usuario> {
 	}
 
 	// Buscar Usuario com Base no cpf e senha
-	public Usuario getUsuario(String cpf, String senha) {
-		try {
-			Usuario usuario = (Usuario) getEm()
+	public Usuario getUsuario(String cpf, String senha) throws Throwable {
+				Usuario usuario = (Usuario) getEm()
 					.createQuery("SELECT u from Usuario u where u.cpf = :cpf and u.senha = :senha")
 					.setParameter("cpf", cpf).setParameter("senha", senha).getSingleResult();
 			return usuario;
-		} catch (Throwable e) {
-			e.printStackTrace();
-			return null;
-
-		}
+		
 
 	}
 

@@ -30,20 +30,24 @@ public class UsuarioBean implements Serializable {
 
 	// Logar
 	public String logar() {
-		usuario = uDao.getUsuario(cpf, senha); // Buscar Usuario com Base no cpf e senha cadastrado no Banco de Dados.
-		if (usuario != null) {
-			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
-					.getSession(false);
-			session.setAttribute("usuarioLogado", usuario); // Cria uma Sessão Valida para o Usuario
-
-			return "/pages/index?faces-redirect=true";
+		try {
+			usuario = uDao.getUsuario(cpf, senha);
+			if (usuario != null) {
+				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
+						.getSession(false);
+				session.setAttribute("usuarioLogado", usuario); // Cria uma Sessão Valida para o Usuario
+				return "/pages/listagem?faces-redirect=true";
+			}
+			return null;
+		} catch (Throwable e) {
+			Messages.addGlobalError("Usuário não encontrado!");
+			e.printStackTrace();			
+			return null;
 		}
-		Messages.addGlobalError("Usuário não encontrado!");
-		return "/login?faces-redirect=true";
 	}
 
 	public String logout() {
-			FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "/login?faces-redirect=true";
 	}
 
