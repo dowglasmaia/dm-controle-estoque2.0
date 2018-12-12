@@ -22,79 +22,154 @@
 
 	<ui:define name="conteudo">
 
-		<h:form id="frmProdutos">
-			<h:panelGroup>
-				<!-- Deixando o Formulario Responsivel -->
-				<div class="ui-fluid">
-					<p:growl id="msg" />
+		<section> <h:form id="frmProduto"
+			styleClass="form-horizontal">
 
-					<p:fieldset legend="Entrada de Produtos">
-						<p:panelGrid id="gridProdutos" columns="2"
-							columnClasses="ui-grid-col-2, ui-grid-col-13" layout="grid"
-							styleClass="ui-paneilgrid-blak">
+			<p:growl autoUpdate="true" />
 
-							<h:outputText />
-							<h:inputHidden value="#{produtoBean.produto.id}" />
+			<div class="container-fluid">
 
-							<p:outputLabel for="sku" value="SKU" />
-							<p:inputText id="sku" size="10" placeholder="SKU" maxlength="5"
-								value="#{produtoBean.produto.SKU}" />
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h4>Cadastro de Produtos</h4>
+					</div>
 
-							<p:outputLabel for="desc" value="Descrição" />
-							<p:inputText id="desc" size="50" placeholder="Descrição"
-								value="#{produtoBean.produto.descricao}" />
-
-							<p:outputLabel for="marca" value="Marca" />
-							<p:inputText id="marca" size="50" placeholder="Marca"
-								value="#{produtoBean.produto.marca}" />
-
-							<p:outputLabel for="fornc" value="Fornecedor" />
-							<p:selectOneMenu id="fornc" filter="true"
-								value="#{produtoBean.produto.fornecedor}"
-								converter="omnifaces.SelectItemsConverter">
-								<f:selectItem itemLabel="Selecione um Fornecedor"
-									noSelectionOption="true" />
-
-								<f:selectItems id="itForn" value="#{produtoBean.fornecedores}"
-									var="forn" itemLabel="#{forn.nome}" itemValue="#{forn}" />
-							</p:selectOneMenu>
-
-							<p:outputLabel for="qtda" value="Quantidade" />
-							<p:inputText id="qtda" size="10" placeholder="Quantidade"
-								value="#{produtoBean.quantidade}" />
-
-							<p:outputLabel for="vlrCusto" value="Valor de Custo" />
-							<p:inputText id="vlrCusto" size="20" placeholder="0.00"
-								maxlength="20" styleClass="moeda"
-								value="#{produtoBean.produto.valorCusto}">
-								<f:convertNumber maxFractionDigits="2" />
-							</p:inputText>
-
-							<p:outputLabel for="estoque" value="Estoque Atual" />
-							<h:outputText id="estoque"
-								value="#{produtoBean.produto.estoqueAtual}" />
+					<div class="panel-body">
 
 
-						</p:panelGrid>
+						<div class="row">
 
-					</p:fieldset>
+							<div class="form-group col-sm-4">
+								<div class="col-sm-2 control-label">
+									<h:outputLabel for="sku" value="SKU" />
+								</div>
+								<div class="col-sm-10">
+									<p:inputText id="sku" value="#{produtoBean.produto.SKU}"
+										required="true" requiredMessage="Informe o SKU do Produto"
+										styleClass="form-control" />
+								</div>
+							</div>
+							<!-- /form-group -->
+
+							<div class="form-group col-sm-8">
+								<div class="col-sm-2 control-label">
+									<h:outputLabel for="descricao" value="Descrição" />
+								</div>
+								<div class="col-sm-10">
+									<p:inputText id="descricao"
+										value="#{produtoBean.produto.descricao}" required="true"
+										requiredMessage="Informe a Descrição do Produto"
+										styleClass="form-control" />
+								</div>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="form-group col-sm-4">
+								<div class="col-sm-2 control-label">
+									<h:outputLabel for="marca" value="Marca" />
+								</div>
+								<div class="col-sm-10">
+									<p:inputText id="marca" value="#{produtoBean.produto.marca}"
+										required="true" requiredMessage="Informe a Marca do Produto"
+										styleClass="form-control" />
+								</div>
+							</div>
+							<!-- /form-group -->
+
+							<div class="form-group col-sm-8">
+								<div class="col-sm-2 control-label">
+									<h:outputLabel for="fornecedor" value="Fornecedor" />
+								</div>
+								<div class="col-sm-10">
+									<h:selectOneMenu id="fornecedor"
+										value="#{produtoBean.produto.fornecedor}"
+										styleClass="form-control input-md"
+										converter="omnifaces.SelectItemsConverter">
+
+										<f:selectItem itemLabel="Selecione um Fornecedor" />
+										<f:selectItems id="itemForn"
+											value="#{produtoBean.fornecedores}" var="forncedor"
+											itemLabel="#{forncedor.nome}" itemValue="#{forncedor}" />
+									</h:selectOneMenu>
+								</div>
+							</div>
+							<!-- /form-group -->
+						</div>
+
+						<div class="row">
+							<div class="form-group col-sm-4">
+								<div class="col-sm-4 control-label">
+									<h:outputLabel for="qtda" value="Quantidade" />
+								</div>
+
+								<div class="col-sm-8">
+									<p:inputText id="qtda" value="#{produtoBean.produto.qtda}"
+										required="true"
+										requiredMessage="Informe a quantidade de Produto"
+										styleClass="form-control" />
+								</div>
+							</div>
+							<!-- /form-group -->
+
+							<div class="form-group col-sm-8">
+								<div class="col-sm-2 control-label">
+									<h:outputLabel for="vlrUno" value="Valor de Custo" />
+								</div>
+								<div class="col-sm-10">
+									<div class="input-group">
+										<div class="input-group-addon">$</div>
+										<p:inputText id="vlrUno" value="#{produtoBean.produto.valorCusto}" required="true"
+											requiredMessage="Informe o Valor de custo do Produto"
+											styleClass="form-control moeda" >
+										<f:convertNumber maxFractionDigits="10"/>
+										</p:inputText>
+									</div>
+								</div>
+							</div>
+							<!-- /form-group -->
+						</div>
+
+						<div class="row">
+							<div class="form-group col-sm-4">
+								<div class="col-sm-2 control-label">
+									<h:outputLabel for="estoqueAtual" value="Estoque Atual" />
+								</div>
+								<div class="col-sm-10">
+									<p:inputText id="estoqueAtual"
+										value="#{produtoBean.produto.estoqueAtual}" readonly="true"
+										disabled="true" styleClass="form-control" />
+								</div>
+
+							</div>
+							<!-- /form-group -->
+						</div>
+						<!-- /row -->
+
+
+
+						<!-- Butões -->
+						<div class="btn-gp">
+							<div class="container-fluid">
+								<p:commandButton value="Novo" icon="ui-icon-plus"
+									styleClass="btn btn-default" actionListener="#{produtoBean.novo}" />
+
+								<p:commandButton value="Salvar" icon="ui-icon-disk"
+									styleClass="btn btn-default" actionListener="#{produtoBean.saveOrUpdate}" />
+
+								<p:commandButton value="Cancelar" icon="ui-icon-trash"
+									styleClass="btn btn-default" actionListener="#{produtoBean.novo}" />
+							</div>
+						</div>
+						
+					</div>
 				</div>
-				<!-- Butões -->
-				<div align="right" style="margin-top: 5px">
-					<p:commandButton value="Novo" icon="ui-icon-plus"
-						actionListener="#{produtoBean.novo}"
-						update="frmProdutos:gridProdutos" />
 
-					<p:commandButton value="Salvar" icon="ui-icon-disk"
-						actionListener="#{produtoBean.saveOrUpdate}"
-						update="frmProdutos:gridProdutos frmProdutos:msg" />
 
-					<p:commandButton value="Cancelar" icon="ui-icon-trash"
-						update="frmProdutos:gridProdutos" />
-				</div>
-			</h:panelGroup>
 
-		</h:form>
+			</div>
+		</h:form> </section>
 	</ui:define>
 
 </ui:composition>

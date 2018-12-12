@@ -1,6 +1,7 @@
 package org.store.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,7 +38,10 @@ public class Produto implements Serializable {
 	private Fornecedor fornecedor;
 
 	@Column(precision = 12, scale = 2)
-	private Double valorCusto;
+	private BigDecimal valorCusto;
+	
+	@Column(length = 20)
+	private Integer qtda;
 
 	@Column(length = 20)
 	private Integer estoqueAtual;
@@ -79,11 +83,11 @@ public class Produto implements Serializable {
 		this.fornecedor = fornecedor;
 	}
 
-	public Double getValorCusto() {
+	public BigDecimal getValorCusto() {
 		return valorCusto;
 	}
 
-	public void setValorCusto(Double valorCusto) {
+	public void setValorCusto(BigDecimal valorCusto) {
 		this.valorCusto = valorCusto;
 	}
 
@@ -104,6 +108,14 @@ public class Produto implements Serializable {
 		SKU = sKU;
 	}
 
+	public Integer getQtda() {
+		return qtda;
+	}
+	
+	public void setQtda(Integer qtda) {
+		this.qtda = qtda;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
