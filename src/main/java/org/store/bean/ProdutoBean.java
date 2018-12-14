@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.inject.Model;
+import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 
@@ -47,15 +48,26 @@ public class ProdutoBean implements Serializable {
 		this.produto = new Produto();
 	}
 
+	// Cancelar Baixar
+	public String cancelarBaixa() {
+		novo();
+		return "/pages/listagem?faces-redirect=true";
+	}
+
+	// Cancelar
+	public String cancelar() {
+		return "pages/produtos?faces-redirect=true";
+	}
+
 	// Salvar
-	public void saveOrUpdate() {
+	public String saveOrUpdate() {
 		try {
 			if (this.produto.getId() != null && produto.getId() != 0) {
-				produto.setEstoqueAtual(quantidade + produto.getEstoqueAtual());
+				produto.setEstoque(quantidade + produto.getEstoque());
 				pDao.update(produto);
 				Messages.addGlobalInfo("Produto Atualizado com Sucesso!");
 			} else {
-				produto.setEstoqueAtual(quantidade);
+				produto.setEstoque(quantidade);
 				pDao.save(produto);
 				Messages.addGlobalInfo("Produto Salvo com Sucesso!");
 			}
@@ -63,6 +75,7 @@ public class ProdutoBean implements Serializable {
 			Messages.addGlobalError("Erro ao Tentar Salvar ou Atualizar o Produto!");
 			e.printStackTrace();
 		}
+		return "/pages/listagem?faces-redirect=true";
 	}
 
 	// Listar Todos
@@ -99,17 +112,26 @@ public class ProdutoBean implements Serializable {
 	}
 
 	// Atualiza Estoque
-	public void baixarEstoque() {
-		if (produto.getEstoqueAtual() != 0 && qtdaSaida <= produto.getEstoqueAtual()) {
-			produto.setEstoqueAtual(produto.getEstoqueAtual() - qtdaSaida);
+	public String baixarEstoque() {
+		if (produto.getEstoque() == 0 || qtdaSaida >= produto.getEstoque()) {
+			Messages.addGlobalFatal("Erro ao Tentar Atualizar Estoque, revise os dados.");
+
+		} else {
+			produto.setEstoque(produto.getEstoque() - qtdaSaida);
 			try {
 				pDao.update(produto);
 				Messages.addGlobalInfo("Estoque Atualizado com Sucesso!");
+
 			} catch (Exception e) {
 				Messages.addGlobalWarn("Erro ao Tentar Atualizar Estoque!");
 				e.printStackTrace();
 			}
 		}
+		return "";
+	}
+
+	public void saidaPro(ActionEvent evento) {
+		produto = (Produto) evento.getComponent().getAttributes().get("produtoSelecionado");
 	}
 
 	// **Getters e Setters**//

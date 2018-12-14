@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-
 /*
  * Autor: Dowglas Maia
  * Skype: live:dowglasmaia
@@ -25,30 +24,22 @@ public class Produto implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(length = 12, unique=true)	
+	@Column(length = 12, unique = true)
 	private String SKU;
 
-	@Column(length = 50)	
+	@Column(length = 50)
 	private String descricao;
 
-	@Column(length = 50)	
+	@Column(length = 50)
 	private String marca;
 
 	@ManyToOne
 	private Fornecedor fornecedor;
 
 	@Column(precision = 12, scale = 2)
-	private BigDecimal valorCusto;
+	private BigDecimal valorCusto;	
 	
-	@Column(length = 20)
-	private Integer qtda;
-
-	@Column(length = 20)
-	private Integer estoqueAtual;
-
-	public Produto() {
- 
-	}
+	private Integer estoque;
 
 	// ***Getters e Setters***//
 	public Integer getId() {
@@ -57,6 +48,15 @@ public class Produto implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	
+	public Integer getEstoque() {
+		return estoque;
+	}
+
+	public void setEstoque(Integer estoque) {
+		this.estoque = estoque;
 	}
 
 	public String getDescricao() {
@@ -91,14 +91,6 @@ public class Produto implements Serializable {
 		this.valorCusto = valorCusto;
 	}
 
-	public Integer getEstoqueAtual() {
-
-		return estoqueAtual;
-	}
-
-	public void setEstoqueAtual(Integer estoqueAtual) {
-		this.estoqueAtual = estoqueAtual;
-	}
 
 	public String getSKU() {
 		return SKU;
@@ -108,14 +100,6 @@ public class Produto implements Serializable {
 		SKU = sKU;
 	}
 
-	public Integer getQtda() {
-		return qtda;
-	}
-	
-	public void setQtda(Integer qtda) {
-		this.qtda = qtda;
-	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

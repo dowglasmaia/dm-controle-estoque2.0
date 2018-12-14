@@ -39,6 +39,11 @@
 		$(document).ready(function() {
 			configurarMoeda();
 		});
+
+		$('#myModal').on('show.bs.modal', function (e) {
+			  if (!data) return e.preventDefault() // stops modal from being shown
+		})
+		
 	</script>
 </h:head>
 
