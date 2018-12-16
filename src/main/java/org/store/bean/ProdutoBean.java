@@ -44,8 +44,9 @@ public class ProdutoBean implements Serializable {
 	private List<Produto> produtos = new ArrayList<>();
 
 	// Novo
-	public void novo() {
+	public String novo() {
 		this.produto = new Produto();
+		return "/pages/produtos?faces-redirect=true";
 	}
 
 	// Cancelar Baixar
@@ -56,11 +57,11 @@ public class ProdutoBean implements Serializable {
 
 	// Cancelar
 	public String cancelar() {
-		return "pages/produtos?faces-redirect=true";
+		return "/pages/produtos?faces-redirect=true";
 	}
 
 	// Salvar
-	public String saveOrUpdate() {
+	public void saveOrUpdate() {
 		try {
 			if (this.produto.getId() != null && produto.getId() != 0) {
 				produto.setEstoque(quantidade + produto.getEstoque());
@@ -75,7 +76,7 @@ public class ProdutoBean implements Serializable {
 			Messages.addGlobalError("Erro ao Tentar Salvar ou Atualizar o Produto!");
 			e.printStackTrace();
 		}
-		return "/pages/listagem?faces-redirect=true";
+		//return "/pages/listagem?faces-redirect=true";
 	}
 
 	// Listar Todos
@@ -120,14 +121,14 @@ public class ProdutoBean implements Serializable {
 			produto.setEstoque(produto.getEstoque() - qtdaSaida);
 			try {
 				pDao.update(produto);
-				Messages.addGlobalInfo("Estoque Atualizado com Sucesso!");	
-				
+				Messages.addGlobalInfo("Estoque Atualizado com Sucesso!");
+
 			} catch (Exception e) {
 				Messages.addGlobalWarn("Erro ao Tentar Atualizar Estoque!");
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
 
 	public void saidaPro(ActionEvent evento) {

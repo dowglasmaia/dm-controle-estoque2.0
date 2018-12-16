@@ -3,12 +3,7 @@ package org.store.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /*
  * Autor: Dowglas Maia
@@ -24,7 +19,7 @@ public class Produto implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(length = 12, unique = true)
+	@Column(length = 16, unique = true)
 	private String SKU;
 
 	@Column(length = 50)
@@ -39,6 +34,7 @@ public class Produto implements Serializable {
 	@Column(precision = 12, scale = 2)
 	private BigDecimal valorCusto;	
 	
+	@Column(length = 20)
 	private Integer estoque;
 
 	// ***Getters e Setters***//
