@@ -34,11 +34,11 @@ public class WebAuth implements Filter {
 		if (usuario == null) {
 			res.sendRedirect(req.getContextPath() + "/login.xhtml");
 
-		} else
+		} else 
 			chain.doFilter(request, response);
-
-	}
-
+		}
+			
+	
 	public void init(FilterConfig fConfig) throws ServletException {
 
 	}

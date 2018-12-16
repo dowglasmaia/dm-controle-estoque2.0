@@ -1,10 +1,12 @@
 package org.store.entity;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Usuario implements Serializable {
@@ -24,18 +26,14 @@ public class Usuario implements Serializable {
 	private String email;
 
 	@Column(length = 80, nullable = false)
-	private String senha;
+	private String senha;	
 
-	/* Criando o mapeamento das permissões com o Usuario, sem a necessidade de criar a class UsuarioPermissao */
-	@ElementCollection(targetClass = String.class)
-	@JoinTable(name = "usuario_permissao", uniqueConstraints = {
-			@UniqueConstraint(columnNames = { "usuario", "permissao" }) }, joinColumns = @JoinColumn(name = "usuario"))
-	@Column(name = "permissao", length = 50)
-	private Set<String> permisao = new HashSet<String>();
+	//** Getteres e Setters**//	
 
 	public Integer getMatricula() {
 		return matricula;
 	}
+
 
 	public void setMatricula(Integer matricula) {
 		this.matricula = matricula;

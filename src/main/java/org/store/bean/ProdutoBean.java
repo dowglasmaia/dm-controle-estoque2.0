@@ -66,7 +66,7 @@ public class ProdutoBean implements Serializable {
 			if (this.produto.getId() != null && produto.getId() != 0) {
 				produto.setEstoque(quantidade + produto.getEstoque());
 				pDao.update(produto);
-				Messages.addGlobalInfo("Produto Atualizado com Sucesso!");
+				Messages.addGlobalWarn("Produto Atualizado com Sucesso!");
 			} else {
 				produto.setEstoque(quantidade);
 				pDao.save(produto);
@@ -121,7 +121,7 @@ public class ProdutoBean implements Serializable {
 			produto.setEstoque(produto.getEstoque() - qtdaSaida);
 			try {
 				pDao.update(produto);
-				Messages.addGlobalInfo("Estoque Atualizado com Sucesso!");
+				Messages.addGlobalWarn("Estoque Atualizado com Sucesso!");
 
 			} catch (Exception e) {
 				Messages.addGlobalWarn("Erro ao Tentar Atualizar Estoque!");

@@ -36,6 +36,7 @@ public class UsuarioBean implements Serializable {
 				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
 						.getSession(false);
 				session.setAttribute("usuarioLogado", usuario); // Cria uma Sessão Valida para o Usuario
+				
 				return "/pages/listagem?faces-redirect=true";
 			}
 			return null;
