@@ -8,7 +8,7 @@ import javax.servlet.http.*;
 
 import org.store.entity.Usuario;
 
-//@WebFilter("/pages/*")
+@WebFilter("/pages/*")
 public class WebAuth implements Filter {
 
 	public WebAuth() {
@@ -27,14 +27,15 @@ public class WebAuth implements Filter {
 
 		HttpSession session = (HttpSession) req.getSession();
 
+		String url = req.getRequestURL().toString(); // pega a URL do Navegador
+
 		Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
 
 		if (usuario == null) {
 			res.sendRedirect(req.getContextPath() + "/login.xhtml");
 
-		} else {
+		} else
 			chain.doFilter(request, response);
-		}
 
 	}
 

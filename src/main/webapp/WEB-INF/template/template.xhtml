@@ -48,34 +48,70 @@
 </h:head>
 
 <h:body>
-	<b:container>
-		<h:form id="frmMenu">
+	<h:form>
+		<!-- Navbar (Barra de Navegação) -->
+		<nav
+			class="navbar navbar-fixed-top  navbar-inverse navbar-transparente">
+		<div class="container">
 
-			<b:navBar brand="Gestão de Estoque" brandHref="#" fluid="true">
-				<b:navbarLinks>
-					<b:navLink value="Entrada" outcome="/pages/produtos.xhtml" />
-					<b:navLink value="Saída" outcome="/pages/listagem.xhtml" />
-					<b:navLink value="Fornecedor" outcome="/pages/fornecedor.xhtml" />
+			<!-- header -->
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target="#menu">
+					<span class="sr-only">alternar navegação</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
 
-				</b:navbarLinks>
+				</button>
 
-				<b:navbarLinks pull="right" style-class="hidden-xs">
-					<b:label text="Usuario Logado" value="#{usuarioBean.usuario.nome}" />
-					<b:navLink value="Consultas" outcome="/pages/listagem.xhtml" />
+				<!-- logo-barra -->
+				<a href="#" class="navbar-brand"> <spam class="img-logo">DK'Estoque</spam>
+				</a>
+			</div>
+
+			<!-- navbar -->
+			<div class="collapse navbar-collapse" id="menu">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="produtos.xhtml">Cadastro de Produtos</a></li>
+					<li><a href="fornecedor.xhtml">Cadastro de Fornecedores</a></li>
+					<li><a href="listagem.xhtml">Listagem de Produtos</a></li>
+
+					<li class="divisor" role="separator"></li>
+
+					<li>
+						<h:commandLink action="#{usuarioBean.logout()}" value="Sair" immediate="true"/>											
+					</li>
+				</ul>
+			</div>
 
 
-					<h:commandLink action="#{usuarioBean.logout()}" value="Sair" />
+		</div>
+		<!-- /Container --> </nav>
+		<!-- /Navbar (Barra de Navegação) -->
+	</h:form>
 
-				</b:navbarLinks>
+	<!-- Conteudo -->
+	<ui:insert name="conteudo">
+
+	</ui:insert>
 
 
-			</b:navBar>
-		</h:form>
 
-		<ui:insert name="conteudo">
+	<!-- Rodape -->
+	<footer id="rodape">
+	<div class="container">
+		
+			<span style="float: left">Desenvolvido por Dowglas Maia |
+				e-Mail:dowglasmaia@live.com | <strong>Github: https://github.com/dowglasmaia</strong></span>
 
-		</ui:insert>
+			<div id="userLogado">
+				<strong><span>Usuário logado:</span></strong>
+				<h:outputText value="#{usuarioBean.usuario.nome}" />
+			</div>
+		
+	</div>
+	<!-- /Container --> </footer>
 
-	</b:container>
+
 </h:body>
 </html>

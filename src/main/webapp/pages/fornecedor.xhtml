@@ -19,13 +19,14 @@
 
 		
 
-		<div class="container-fluid">
-		<p:growl autoUpdate="true" />
+	<div class="container">
+	
 			<section> 
+				<p:messages autoUpdate="true" />
 			 <h:form id="frmFornecedor"
 				styleClass="form-horizontal">
 
-				<p:growl autoUpdate="true" />
+				<p:messages autoUpdate="true" />
 
 				<div class="panel panel-primary">
 
@@ -52,7 +53,7 @@
 
 							<div class="form-group col-sm-6">
 								<div class="col-sm-2 control-label">
-									<h:outputLabel for="email" value="e-Mail" />
+									<p:outputLabel for="email" value="e-Mail" />
 								</div>
 
 								<div class="col-sm-10">
@@ -90,7 +91,8 @@
 								</div>
 
 								<div class="col-sm-10">
-									<p:inputText id="contato"
+									<p:inputMask mask="(99)9 9999-9999" id="contato"
+									
 										value="#{fornecedorBean.fornecedor.telefone}"
 										styleClass="form-control" placeholder="Telefone para contato"
 										required="true" requiredMessage="campo telefone é obrigatório"

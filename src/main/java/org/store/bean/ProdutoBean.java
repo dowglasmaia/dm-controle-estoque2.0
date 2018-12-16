@@ -112,7 +112,7 @@ public class ProdutoBean implements Serializable {
 	}
 
 	// Atualiza Estoque
-	public String baixarEstoque() {
+	public void baixarEstoque() {
 		if (produto.getEstoque() == 0 || qtdaSaida >= produto.getEstoque()) {
 			Messages.addGlobalFatal("Erro ao Tentar Atualizar Estoque, revise os dados.");
 
@@ -120,14 +120,14 @@ public class ProdutoBean implements Serializable {
 			produto.setEstoque(produto.getEstoque() - qtdaSaida);
 			try {
 				pDao.update(produto);
-				Messages.addGlobalInfo("Estoque Atualizado com Sucesso!");
-
+				Messages.addGlobalInfo("Estoque Atualizado com Sucesso!");	
+				
 			} catch (Exception e) {
 				Messages.addGlobalWarn("Erro ao Tentar Atualizar Estoque!");
 				e.printStackTrace();
 			}
 		}
-		return "";
+		
 	}
 
 	public void saidaPro(ActionEvent evento) {

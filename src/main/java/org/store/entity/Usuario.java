@@ -2,11 +2,7 @@ package org.store.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Usuario implements Serializable {
@@ -28,7 +24,8 @@ public class Usuario implements Serializable {
 	@Column(length = 80, nullable = false)
 	private String senha;
 
-	// ***************//////*************
+	
+
 	public Integer getMatricula() {
 		return matricula;
 	}
