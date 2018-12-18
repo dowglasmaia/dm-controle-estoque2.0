@@ -11,7 +11,6 @@
 	<build>
 		<finalName>store</finalName>
 
-
 	</build>
 	<properties>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
@@ -63,12 +62,6 @@
 			<version>1.0.2.Final</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.wildfly.swarm/wildfly-swarm-bootstrap -->
-		<dependency>
-			<groupId>org.wildfly.swarm</groupId>
-			<artifactId>wildfly-swarm-bootstrap</artifactId>
-			<version>1.0.0.Alpha5</version>
-		</dependency>
 
 
 	</dependencies>
