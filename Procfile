@@ -1,0 +1,1 @@
+web: java -Dswarm.http.port=$PORT -jar target/store-1.0.0-SNAPSHOT-swarm.jar 
