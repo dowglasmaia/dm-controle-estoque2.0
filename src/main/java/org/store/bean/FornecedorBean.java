@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.EJB;
-import javax.enterprise.inject.Model;
 import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
+
 
 import org.omnifaces.util.Messages;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.store.dao.FornecedorDAO;
 import org.store.entity.Fornecedor;
 
@@ -20,15 +20,15 @@ import org.store.entity.Fornecedor;
  * 
  * */
 
-@Model
+@Component
 @ViewScoped
 public class FornecedorBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EJB
+	@Autowired
 	private FornecedorDAO fDao;
 
-	@Inject
+	@Autowired
 	private Fornecedor fornecedor;
 
 	private List<Fornecedor> fornecedores = new ArrayList<>();
@@ -58,7 +58,7 @@ public class FornecedorBean implements Serializable {
 	// listar
 	public void listarFornecedores() {
 		try {
-			fornecedores = fDao.findAll();
+			fornecedores = fDao.FindAll();
 		} catch (Exception e) {
 			Messages.addGlobalError("Erro ao Realizar Consulta de Fornecedores!");
 			e.printStackTrace();

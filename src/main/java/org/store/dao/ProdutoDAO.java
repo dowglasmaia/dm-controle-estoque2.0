@@ -1,7 +1,8 @@
 package org.store.dao;
 
-import javax.ejb.Stateless;
 
+
+import org.springframework.stereotype.Component;
 import org.store.entity.Produto;
 
 /*
@@ -10,8 +11,8 @@ import org.store.entity.Produto;
  * E-mail:dowglasmaia@live.com
  * */
 
-@Stateless
-public class ProdutoDAO extends GenericDao<Produto>{
+@Component
+public class ProdutoDAO extends GenericDAO<Produto>{
 	private static final long serialVersionUID = 1L;
 
 	public ProdutoDAO() {

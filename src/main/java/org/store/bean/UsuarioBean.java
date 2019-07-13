@@ -2,27 +2,26 @@ package org.store.bean;
 
 import java.io.Serializable;
 
-import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
-import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
+
 import javax.servlet.http.HttpSession;
 
 import org.omnifaces.util.Messages;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 import org.store.dao.UsuarioDAO;
 import org.store.entity.Usuario;
 
-@Model
-@SessionScoped
+@Component
+@SessionScope
 public class UsuarioBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EJB
+	@Autowired
 	private UsuarioDAO uDao;
 
-	@Inject
-	private Usuario usuario;
+	private Usuario usuario = new Usuario();
 
 	private String cpf;
 

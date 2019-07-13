@@ -4,13 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.EJB;
-import javax.enterprise.inject.Model;
 import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
 
 import org.omnifaces.util.Messages;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.store.dao.FornecedorDAO;
 import org.store.dao.ProdutoDAO;
 import org.store.entity.Fornecedor;
@@ -22,20 +21,18 @@ import org.store.entity.Produto;
  * E-mail:dowglasmaia@live.com
  * 
  * */
-
-@Model
+@Component
 @ViewScoped
 public class ProdutoBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EJB
+	@Autowired
 	private ProdutoDAO pDao;
 
-	@EJB
+	@Autowired
 	private FornecedorDAO fDao;
 
-	@Inject
-	private Produto produto;
+	private Produto produto = new Produto();
 
 	private Integer qtdaSaida;
 	private Integer quantidade;
@@ -62,6 +59,7 @@ public class ProdutoBean implements Serializable {
 
 	// Salvar
 	public void saveOrUpdate() {
+		
 		try {
 			if (this.produto.getId() != null && produto.getId() != 0) {
 				produto.setEstoque(quantidade + produto.getEstoque());
@@ -76,13 +74,13 @@ public class ProdutoBean implements Serializable {
 			Messages.addGlobalError("Erro ao Tentar Salvar ou Atualizar o Produto!");
 			e.printStackTrace();
 		}
-		//return "/pages/listagem?faces-redirect=true";
+		// return "/pages/listagem?faces-redirect=true";
 	}
 
 	// Listar Todos
 	public List<Produto> ListarTodos() {
 		try {
-			return produtos = pDao.findAll();
+			return produtos = pDao.FindAll();
 		} catch (Exception e) {
 			Messages.addGlobalError("Erro ao Realizar Consulta de Produtos!");
 			e.printStackTrace();
@@ -93,7 +91,7 @@ public class ProdutoBean implements Serializable {
 	// Remove
 	public void remove(Integer id) {
 		try {
-			pDao.remove(produto);
+			pDao.delete(produto);
 			Messages.addGlobalInfo("Produto Removido com Sucesso!");
 		} catch (Exception e) {
 			Messages.addGlobalError("Erro ao Tentar Remover Produto!");
@@ -104,7 +102,6 @@ public class ProdutoBean implements Serializable {
 	// Listar Fornecedores
 	public void listarFornecedores() {
 		try {
-			this.fornecedores = fDao.findAll();
 		} catch (Exception e) {
 			Messages.addGlobalError("Erro de Sistema!" + Fornecedor.class);
 			e.printStackTrace();

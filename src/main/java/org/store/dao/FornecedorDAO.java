@@ -1,7 +1,8 @@
 package org.store.dao;
 
-import javax.ejb.Stateless;
 
+
+import org.springframework.stereotype.Component;
 import org.store.entity.Fornecedor;
 
 /*
@@ -11,8 +12,8 @@ import org.store.entity.Fornecedor;
  * 
  * */
 
-@Stateless
-public class FornecedorDAO extends GenericDao<Fornecedor>{
+@Component
+public class FornecedorDAO extends GenericDAO<Fornecedor>{
 	private static final long serialVersionUID = 1L;
 
 	public FornecedorDAO() {

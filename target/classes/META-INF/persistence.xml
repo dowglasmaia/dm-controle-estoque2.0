@@ -3,28 +3,30 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="storePU"
-		transaction-type="JTA">
+		transaction-type="RESOURCE_LOCAL">
 
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-		<!-- DataSource -->
-		<jta-data-source>java:jboss/datasources/herokuDS</jta-data-source>
 		<class>org.store.entity.Usuario</class>
 		<class>org.store.entity.Produto</class>
 		<class>org.store.entity.Fornecedor</class>
 
-
 		<!-- Configuracoes especificas do Hibernate -->
 		<properties>
+		
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gestao?createDatabaseIfNotExist=true" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="" />
+
+
 			<property name="hibernate.enable_lazy_load_no_trans" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
-			<property
-				name="hibernate.transaction.flush_before_completion" value="true" />
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.transaction.flush_before_completion" value="true" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 		</properties>
-		
+
 	</persistence-unit>
 </persistence>
