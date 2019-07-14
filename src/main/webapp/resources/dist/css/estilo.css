@@ -33,9 +33,6 @@ LinkedIn: www.linkedin.com/in/dowglasmaia;
 	width: 100%;
 }
 
-.panel-body {
-	margin: 10px auto;
-}
 
 .label-dk {
 	text-align: right;
@@ -65,12 +62,12 @@ p {
 
 /*====Class do Dialog do Paimefaces====*/
 .ui-widget-header {
-	background: #4682B4;
+	background: none;
 	border: 0px;
 	padding: 0px;
 	color: white;
-	font-family: sans-serif;
-	margin: 0px;
+	font-family: 'Philosopher', sans-serif;
+	margin: 1px;
 }
 
 .ui-widget .ui-dialog .ui-datatable {

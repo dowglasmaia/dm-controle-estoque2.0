@@ -20,25 +20,26 @@
 	<!-- Inicio do Conteudo -->
 	<ui:define name="conteudo">
 
-		<div class="container">
+		<div class="container-fluid">
 
-			<section> <p:messages id="msg" autoUpdate="true" /> <h:form
+			<section> 
+			
+			 <h:form
 				id="frmSd_Produtos" styleClass="form-horizontal">
-				<h:panelGroup>
-					<!-- Deixando o Formulario Responsivel -->
+				<h:panelGroup>					
 
-					<div class="panel panel-primary ">
-						<div class="panel-heading ">
-							<h4>Listagem de Produtos</h4>
+					<div class="card ">
+						<div class="card-header ">
+							<h4><i class="fa fa-filter ml-3" aria-hidden="true"></i>Listagem de Produtos</h4>
 						</div>
 
-						<div class="panel-body">
+						<div class="card-body">
 							<div class="table-responsive">
 
 								<p:dataTable id="dtlListagem" value="#{produtoBean.produtos}"
 									widgetVar="proTable" var="produto"
 									emptyMessage="nenhum registro encontrado" reflow="true"
-									paginator="true" paginatorPosition="top" rows="4">
+									paginator="true" paginatorPosition="bottom" rows="10">
 
 
 									<p:column headerText="SKU" style="width: 160px">
@@ -79,7 +80,8 @@
 						</div>
 					</div>
 				</h:panelGroup>
-			</h:form> </section>
+			</h:form>
+		 </section>
 
 			<!-- Saida de Produtos-->
 			<h:form id="frmDialog" styleClass="form">
