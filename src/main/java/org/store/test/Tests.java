@@ -16,7 +16,7 @@ public class Tests {
 		UsuarioDAO userB = new UsuarioDAO();
 		
 		Usuario u = new Usuario();
-		u.setCpf("32000");
+		u.setCpf("120");
 		u.setEmail("dow@live.com.ma");
 		u.setMatricula(1200);
 		u.setNome("Dowglas Maia 35000 iuiuiu");

@@ -23,20 +23,21 @@
 
 		<div class="container">
 
-			<section> <p:messages autoUpdate="true" /> <h:form
+			<section> 	
+			
+			<h:form
 				id="frmProduto" styleClass="form-horizontal">
 				<h:inputHidden value="#{produtoBean.produto.id}" />
 
 				<div class="card" id="pnlProduto">
 
-					<div class="card-header ">
-						<h4 class="text-dark">Cadastro de Produtos</h4>
+					<div class="card-header ">					
+					<h4 class="text-dark"><i class="fa fa-clipboard mr-1" aria-hidden="true"></i>Cadastro de Produtos</h4>																					
 					</div>
 
 					<div class="card-body">
 
 						<div class="row">
-
 							<div class="form-group col-sm-4">
 								<div class="col-sm-2 control-label">
 									<h:outputLabel for="sku" value="SKU" />
@@ -45,7 +46,7 @@
 									<p:inputText id="sku" value="#{produtoBean.produto.SKU}"
 										maxlength="16" required="true"
 										requiredMessage="Informe o SKU do Produto"
-										styleClass="form-control" placeholder="SKU do Produto" />
+										styleClass="form-control" placeholder="SKU" />
 								</div>
 							</div>
 							<!-- /form-group -->
@@ -65,7 +66,6 @@
 						</div>
 
 						<div class="row">
-
 							<div class="form-group col-sm-4">
 								<div class="col-sm-2 control-label">
 									<h:outputLabel for="marca" value="Marca" />
@@ -107,11 +107,15 @@
 
 								<div class="col-sm-8">
 									<p:inputText id="qtda" value="#{produtoBean.quantidade}"
-										required="true"
+										required="true" 
 										requiredMessage="Campo quantidade é Obrigatório"
-										maxlength="20" styleClass="form-control"
-										placeholder="Quantidade" />
-								</div>
+										converterMessage="O Campo quantidade deve ser somente numeros!"
+										styleClass="form-control"
+										placeholder="Quantidae " >								
+									
+									</p:inputText>
+								</div>								
+								<p:keyFilter for="qtda" mask="num"/>
 							</div>
 							<!-- /form-group -->
 
@@ -150,11 +154,11 @@
 
 						<p:commandButton value="Novo" icon="ui-icon-plus"
 							styleClass="btn btn-outline-primary mr-2 p-2 text-dark"
-							action="#{produtoBean.novo}" />
+							action="#{produtoBean.novo}" immediate="true" />
 
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
 							styleClass="btn btn-outline-success mr-2 p-2 text-dark"
-							action="#{produtoBean.saveOrUpdate}" update=":frmProduto" />
+							action="#{produtoBean.saveOrUpdate}" update=":frmProduto :messages" />
 
 						<p:commandButton value="Cancelar" icon="ui-icon-trash"
 							styleClass="btn btn-outline-warning mr-2 p-2 text-dark"
@@ -164,9 +168,9 @@
 
 				</div>
 				<!-- /card -->
-				<h:graphicImage library="img" name="inventario.png"
-					class="rounded mx-auto d-block mt-2" alt="..." style="height: 250px" />
-			</h:form> </section>
+				
+			</h:form> 
+			</section>
 		</div>
 		<!-- /container -->
 	</ui:define>

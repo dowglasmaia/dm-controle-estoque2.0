@@ -38,6 +38,28 @@
 
 
 	<title><ui:insert name="titulo"></ui:insert></title>
+	
+	<!--script para configura Capos de Moeda que usam a Class (moeda chamar no componete usando styleClass(moeda) -->
+	<script>
+		function configurarMoeda() {
+			$(".moeda").maskMoney({
+				decimal : ",",
+				thousands : ".",
+				allowZero : true
+			});
+		}
+		$(document).ready(function() {
+			configurarMoeda();
+		});
+
+		$('#exampleModal').on('show.bs.modal', function(event) {
+			var button = $(event.relatedTarget)
+			var recipient = button.data('whatever')
+			var modal = $(this)
+			modal.find('.modal-title').text('New message to ' + recipient)
+			modal.find('.modal-body input').val(recipient)
+		})
+	</script>
 
 </h:head>
 
@@ -46,40 +68,48 @@
 	<div class="wrapper">
 
 		<!-- Main Header -->
-		<header class="main-header"> <a href="pages/index.jsf"
-			class="logo py-3" style="height: 70px !important"> <span
-			class="logo-mini">
-				<p>M</p>
-		</span> <span class="logo-lg"> <b>Maia</b> D.K Plus
-		</span>
-		</a> <nav class="navbar navbar-static-top " role="navigation"> <!-- Sidebar toggle button-->
-		<a href="#" class="sidebar-toggle" data-toggle="push-menu"
-			role="button"> <span class="sr-only">Toggle navigation</span>
-		</a> <!-- Navbar Right Menu -->
+		<header class="main-header"> 
+		<a href="pages/index.jsf"
+			class="logo py-3" style="height: 70px !important"> 
+			<span class="logo-mini"><p>M</p> </span> 
+		<span class="logo-lg"> <b>Maia</b> D.K Plus </span>
+		</a> 
+				
+		<nav class="navbar navbar-static-top " role="navigation"> 
+		
+		<!-- Sidebar toggle button-->
+		<a href="#" class="sidebar-toggle" data-toggle="push-menu"	role="button"> 
+			<span class="sr-only">Toggle navigation</span>
+		</a> 
+		
+		<!-- Navbar Right Menu -->
 		<div class="navbar-custom-menu">
 			<ul class="nav navbar-nav">
 
 				<!-- User Account Menu -->
-				<li class="dropdown user user-menu"><a href="#"> <h:graphicImage
-							library="img" name="user.png" styleClass="user-image"
-							alt="User Image">
-						</h:graphicImage> <span class="hidden-xs">Dowglas Maia</span>
-				</a></li>
+				<li class="dropdown user user-menu">
+				<a href="#"> 
+			    	<h:graphicImage	library="img" name="user.png" styleClass="user-image" alt="User Image"/> 
+					<span class="hidden-xs">Dowglas Maia</span>
+				</a>
+				</li>
 
 			</ul>
 		</div>
-		</nav> </header>
+		</nav> 
+		</header>
 
 		<!-- Left side column. contains the logo and sidebar -->
-		<aside class="main-sidebar"> <section class="sidebar">
+		<aside class="main-sidebar">
+	  <section class="sidebar">
 		<ul class="sidebar-menu  my-4" data-widget="tree">
 			<li class="header text-center">MENU</li>
 
 			<!-- Optionally, you can add icons to the links -->
-			<li><a href="index.jsf"> <i class="fa fa-home"></i> <span>Home</span></a>
-			</li>
+			<li><a href="index.jsf"> <i class="fa fa-home"></i> <span>Home</span></a></li>
 
-			<li class="treeview"><a href="#"> <i class="fa fa-link"></i>
+			<li class="treeview">
+			<a href="#"> <i class="fa fa-link"></i>
 					<span>Cadastro</span> <span class="pull-right-container"> <i
 						class="fa fa-angle-left pull-right"></i>
 				</span>
@@ -88,7 +118,8 @@
 					<li><a href="produtos.jsf"><i class="fa fa-user ml-3"></i>Produtos</a></li>
 					<li><a href="fornecedor.jsf"><i class="fa fa-inbox ml-3"></i>Fornecedores</a></li>
 
-				</ul></li>
+				</ul>
+			</li>
 
 			<li class="treeview"><a href="#"><i class="fa fa-link"></i>
 					<span>Consultas</span> <span class="pull-right-container"> <i
@@ -104,19 +135,25 @@
 			</li>
 
 		</ul>
-		</section> </aside>
+		</section> 
+		</aside>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
-			<p:tooltip />
+			
 			<!-- Mostra MSG PrimeFaces -->
+			<p:tooltip />			
 
 			<!-- Main content -->
-			<section class="content container-fluid mt-5"> <p:messages
-				id="messages" showDetail="false" closable="true" autoUpdate="true" />
-			<!-- MSG PrimeFaces --> <ui:insert name="conteudo">
+			<section class="content container-fluid mt-5"> 
+			
+			<!-- MSG PrimeFaces --> 
+			<p:messages id="messages" showDetail="false" closable="true" autoUpdate="true" />			
+			
+			<ui:insert name="conteudo">
 
-			</ui:insert> </section>
+			</ui:insert> 
+		  </section>
 		</div>
 		<!-- /.content-wrapper -->
 
@@ -150,27 +187,7 @@
 	<h:outputScript library="dist" name="js/jquery.maskMoney.js" />
 
 
-	<!--script para configura Capos de Moeda que usam a Class (moeda chamar no componete usando styleClass(moeda) -->
-	<script>
-		function configurarMoeda() {
-			$(".moeda").maskMoney({
-				decimal : ",",
-				thousands : ".",
-				allowZero : true
-			});
-		}
-		$(document).ready(function() {
-			configurarMoeda();
-		});
-
-		$('#exampleModal').on('show.bs.modal', function(event) {
-			var button = $(event.relatedTarget)
-			var recipient = button.data('whatever')
-			var modal = $(this)
-			modal.find('.modal-title').text('New message to ' + recipient)
-			modal.find('.modal-body input').val(recipient)
-		})
-	</script>
+	
 
 
 

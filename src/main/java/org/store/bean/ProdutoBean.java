@@ -9,8 +9,9 @@ import javax.faces.view.ViewScoped;
 
 import org.omnifaces.util.Messages;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.context.annotation.RequestScope;
 import org.store.dao.FornecedorDAO;
 import org.store.dao.ProdutoDAO;
 import org.store.entity.Fornecedor;
@@ -23,7 +24,7 @@ import org.store.entity.Produto;
  * 
  * */
 
-@ViewScoped
+@Scope("request")
 @Controller
 public class ProdutoBean implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -34,8 +35,11 @@ public class ProdutoBean implements Serializable {
 	@Autowired
 	private FornecedorDAO fDao;
 
-	private Produto produto; 
-	
+	private List<Fornecedor> fornecedors = new ArrayList<>();
+
+	private Produto produto;
+
+	//
 	public ProdutoBean() {
 		this.produto = new Produto();
 	}
@@ -64,24 +68,24 @@ public class ProdutoBean implements Serializable {
 	}
 
 	// Salvar
-	public String saveOrUpdate() {
-		
+	public void saveOrUpdate() {
+
 		try {
 			if (this.produto.getId() != null && produto.getId() != 0) {
 				produto.setEstoque(quantidade + produto.getEstoque());
 				pDao.update(produto);
 				Messages.addGlobalWarn("Produto Atualizado com Sucesso!");
-				return "/pages/listagem?faces-redirect=true";
+				// return "/pages/listagem?faces-redirect=true";
 			} else {
 				produto.setEstoque(quantidade);
 				pDao.save(produto);
 				Messages.addGlobalInfo("Produto Salvo com Sucesso!");
-				return "/pages/listagem?faces-redirect=true";
+				// return "/pages/listagem?faces-redirect=true";
 			}
 		} catch (Exception e) {
 			Messages.addGlobalError("Erro ao Tentar Salvar ou Atualizar o Produto!");
 			e.printStackTrace();
-			return null;
+			// return null;
 		}
 		// return "/pages/listagem?faces-redirect=true";
 	}
@@ -109,11 +113,14 @@ public class ProdutoBean implements Serializable {
 	}
 
 	// Listar Fornecedores
-	public void listarFornecedores() {
+	public List<Fornecedor> listarFornecedores() {
 		try {
+			this.fornecedores = fDao.FindAll();
+			return fornecedores;
 		} catch (Exception e) {
 			Messages.addGlobalError("Erro de Sistema!" + Fornecedor.class);
 			e.printStackTrace();
+			return null;
 		}
 
 	}
@@ -176,6 +183,10 @@ public class ProdutoBean implements Serializable {
 
 	public List<Produto> getProdutos() {
 		return produtos;
+	}
+
+	public List<Fornecedor> getFornecedors() {
+		return fornecedors;
 	}
 
 }
