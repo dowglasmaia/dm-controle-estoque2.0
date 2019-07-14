@@ -1,25 +1,37 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:jsf="http://java.sun.com/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+	xmlns:p="http://primefaces.org/ui">
+
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<!-- Bootstrap -->
-	<h:outputStylesheet library="css" name="bootstrap.min.css" />
-	<h:outputScript library="js" name="bootstrap.min.js" />
+	<!-- Google Font -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />
 
-	<!-- meu css e js -->
-	<h:outputStylesheet library="css" name="estilo.css" />
-	<h:outputScript library="js" name="jquery.maskMoney.js" />
+
+	<!-- Theme style -->
+	<h:outputStylesheet library="dist" name="css/AdminLTE.min.css" />
+
+	<!-- Bootstrap -->
+	<h:outputStylesheet library="dist"
+		name="bootstrap/css/bootstrap.min.css" />
+
+	<!-- my estilo -->
+	<h:outputStylesheet library="dist" name="css/estilo.css" />
+
+	<!-- css skins -->
+	<h:outputStylesheet library="dist" name="css/skins/skin-blue.min.css" />
+
+	<!--  Addd favicon.png -->
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{request.contextPath}/resources/img/favicon.png" />
 
 
 	<title>Login</title>
@@ -39,24 +51,27 @@
 
 
 				<div class="panel-body">
-				<p:messages autoUpdate="true"/>
+					<p:messages autoUpdate="true" />
 
 					<h:form>
 						<div class="form-group">
-							<h:outputLabel value="CPF" styleClass="control-label"/>
-							<p:inputText value="#{usuarioBean.usuario.cpf}" styleClass="form-control" placeholder="Digite seu CPF = 120" />
-							 
-						</div>
-						
-						<div class="form-group">							
-							<h:outputLabel value="Senha" styleClass="control-label"/>
-							<p:password value="#{usuarioBean.usuario.senha}" styleClass="form-control"  placeholder="Digite sua Senha = 120"/>
+							<h:outputLabel value="CPF" styleClass="control-label" />
+							<p:inputText value="#{usuarioBean.usuario.cpf}"
+								styleClass="form-control" placeholder="Digite seu CPF = 120" />
+
 						</div>
 
-						<h:commandButton action="#{usuarioBean.logar()}" value="Entra no Sistema" styleClass="btn-logar" />
-						
-						
-						
+						<div class="form-group">
+							<h:outputLabel value="Senha" styleClass="control-label" />
+							<p:password value="#{usuarioBean.usuario.senha}"
+								styleClass="form-control" placeholder="Digite sua Senha = 120" />
+						</div>
+
+						<h:commandButton action="#{usuarioBean.logar()}"
+							value="Entra no Sistema" styleClass="btn-logar" />
+
+
+
 					</h:form>
 				</div>
 			</div>

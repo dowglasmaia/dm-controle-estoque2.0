@@ -1,30 +1,156 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+	xmlns:p="http://primefaces.org/ui">
 
 
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
+	<!-- Google Font -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />
+
+
+	<!-- Theme style -->
+	<h:outputStylesheet library="dist" name="css/AdminLTE.min.css" />
+
 	<!-- Bootstrap -->
-	<h:outputStylesheet library="css" name="bootstrap.min.css" />
-	<h:outputScript library="js" name="bootstrap.min.js" />
+	<h:outputStylesheet library="dist"
+		name="bootstrap/css/bootstrap.min.css" />
+		
+			<!-- my estilo -->
+	<h:outputStylesheet library="dist" name="css/estilo.css" />
 
-	<!-- meu css e js -->
-	<h:outputStylesheet library="css" name="estilo.css" />
-	<h:outputScript library="js" name="jquery.maskMoney.js" />
+	<!-- css skins -->
+	<h:outputStylesheet library="dist" name="css/skins/skin-blue.min.css" />
 
+	<!--  Addd favicon.png -->
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{request.contextPath}/resources/img/favicon.png" />
+
+	
 
 	<title><ui:insert name="titulo"></ui:insert></title>
+
+</h:head>
+
+<h:body styleClass="hold-transition skin-blue sidebar-mini">
+
+	<div class="wrapper">
+
+		<!-- Main Header -->
+		<header class="main-header"> <a href="pages/index.jsf"
+			class="logo py-3" style="height: 70px !important"> <span
+			class="logo-mini">
+				<p>M</p>
+		</span> <span class="logo-lg"> <b>Maia</b> GYT Plus
+		</span>
+		</a> <nav class="navbar navbar-static-top " role="navigation"> <!-- Sidebar toggle button-->
+		<a href="#" class="sidebar-toggle" data-toggle="push-menu"
+			role="button"> <span class="sr-only">Toggle navigation</span>
+		</a> <!-- Navbar Right Menu -->
+		<div class="navbar-custom-menu">
+			<ul class="nav navbar-nav">
+
+				<!-- User Account Menu -->
+				<li class="dropdown user user-menu"><a href="#"> <h:graphicImage
+							library="img" name="user.png" styleClass="user-image"
+							alt="User Image">
+						</h:graphicImage> <span class="hidden-xs">Dowglas Maia</span>
+				</a></li>
+
+			</ul>
+		</div>
+		</nav> </header>
+
+		<!-- Left side column. contains the logo and sidebar -->
+		<aside class="main-sidebar"> <section class="sidebar">
+		<ul class="sidebar-menu  my-4" data-widget="tree">
+			<li class="header text-center">MENU</li>
+
+			<!-- Optionally, you can add icons to the links -->
+			<li><a href="index.jsf"><i class="fa fa-home"></i><span>Home</span></a>
+			</li>
+
+
+
+			<li class="treeview"><a href="#"> <i class="fa fa-link"></i>
+					<span>Cadastro</span> <span class="pull-right-container"> <i
+						class="fa fa-angle-left pull-right"></i>
+				</span>
+			</a>
+				<ul class="treeview-menu">
+					<li><a href="produtos.jsf"><i class="fa fa-user ml-3"></i>Produtos</a></li>
+					<li><a href="fornecedor.jsf"><i class="fa fa-inbox ml-3"></i>Fornecedores</a></li>
+					
+				</ul>
+			</li>
+
+			<li class="treeview"><a href="#"><i class="fa fa-link"></i>
+					<span>Consultas</span> <span class="pull-right-container"> <i
+						class="fa fa-angle-left pull-right"></i>
+				</span> </a>
+				<ul class="treeview-menu">
+					<li><a href="listagem.jsf"><i class="fa fa-user ml-3"></i>Lista de Produtos</a></li>
+					
+				</ul></li>
+
+			<li><a href="#"><i class="fa fa-link"></i> <span>Suporte</span></a>
+			</li>
+
+		</ul>
+		</section> </aside>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<p:tooltip />
+			<!-- Mostra MSG PrimeFaces -->
+			
+			<!-- Main content -->			
+			<section class="content container-fluid mt-5"> 
+			<p:messages	id="messages" showDetail="false" closable="true" autoUpdate="true" />
+			<!-- MSG PrimeFaces --> 
+			
+			<ui:insert name="conteudo">
+
+			</ui:insert> 
+			
+			</section>
+		</div>
+		<!-- /.content-wrapper -->
+
+		<!-- Main Footer -->
+		<footer class="main-footer"> <!-- To the right -->
+		
+		<div class="pull-right hidden-xs">Desenvolvidor por: Dowglas Maia
+	   </div>
+
+		<!-- Default to the left --> <strong>&copy; 2019 | <a
+			href="https://github.com/dowglasmaia" target="_blank">Maia Ti</a>.
+		</strong> Todos os direitos reservados 
+		
+		</footer>
+
+	</div>
+	<!-- ./wrapper -->
+
+
+<!-- Bootstrap 4.3 js -->
+	<h:outputScript library="dist" name="bootstrap/js/bootstrap.min.js" />
+
+	<!-- AdminLTE App  js-->
+	<h:outputScript library="dist" name="js/adminlte.min.js" />
+
+	<!-- Js Mask de Moeda -->
+	<h:outputScript library="dist" name="js/jquery.maskMoney.js" />
+	
 
 	<!--script para configura Capos de Moeda que usam a Class (moeda chamar no componete usando styleClass(moeda) -->
 	<script>
@@ -35,82 +161,19 @@
 				allowZero : true
 			});
 		}
-
 		$(document).ready(function() {
 			configurarMoeda();
 		});
 
-		$('#myModal').on('show.bs.modal', function (e) {
-			  if (!data) return e.preventDefault() // stops modal from being shown
+		$('#exampleModal').on('show.bs.modal', function(event) {
+			var button = $(event.relatedTarget)
+			var recipient = button.data('whatever')
+			var modal = $(this)
+			modal.find('.modal-title').text('New message to ' + recipient)
+			modal.find('.modal-body input').val(recipient)
 		})
-		
 	</script>
-</h:head>
 
-<h:body>
-	<h:form>
-		<!-- Navbar (Barra de Navegação) -->
-		<nav
-			class="navbar navbar-fixed-top  navbar-inverse navbar-transparente shadow-lg p-3 mb-5 bg-white rounded">
-		<div class="container">
-
-			<!-- header -->
-			<div class="navbar-header">
-				<button class="navbar-toggle collapsed" data-toggle="collapse"
-					data-target="#menu">
-					<span class="sr-only">alternar navegação</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-
-				</button>
-
-				<!-- logo-barra -->
-				<a href="#" class="navbar-brand"> <spam class="img-logo">DK'Estoque</spam>
-				</a>
-			</div>
-
-			<!-- navbar -->
-			<div class="collapse navbar-collapse" id="menu">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="produtos.jsf">Cadastro de Produtos</a></li>
-					<li><a href="fornecedor.jsf">Cadastro de Fornecedores</a></li>
-					<li><a href="listagem.jsf">Listagem de Produtos</a></li>
-
-					<li class="divisor" role="separator"></li>
-
-					<li>
-						<h:commandLink action="#{usuarioBean.logout()}" value="Sair" immediate="true"/>											
-					</li>
-				</ul>
-			</div>
-
-
-		</div>
-		<!-- /Container --> </nav>
-		<!-- /Navbar (Barra de Navegação) -->
-	</h:form>
-
-	<!-- Conteudo -->
-	<ui:insert name="conteudo">
-
-	</ui:insert>
-
-
-
-	<!-- Rodape -->
-	<footer id="rodape">
-	<div class="container">
-		
-			<span style="float: left">Desenvolvido por Dowglas Maia |
-				e-Mail:dowglasmaia@live.com | <strong>Github: https://github.com/dowglasmaia</strong></span>
-
-			<div id="userLogado">
-				<strong><span>Usuário logado:</span></strong>
-				<h:outputText value="#{usuarioBean.usuario.nome}" />
-			</div>
-		
-	</div>
-	<!-- /Container --> </footer>
 
 
 </h:body>
