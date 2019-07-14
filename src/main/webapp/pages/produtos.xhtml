@@ -21,21 +21,19 @@
 
 	<ui:define name="conteudo">
 
-		<div class="container">			
-			
-			<section> 
-			<p:messages autoUpdate="true" />
-			
-			 <h:form id="frmProduto"
-				styleClass="form-horizontal">
+		<div class="container">
+
+			<section> <p:messages autoUpdate="true" /> <h:form
+				id="frmProduto" styleClass="form-horizontal">
 				<h:inputHidden value="#{produtoBean.produto.id}" />
 
-				<div class="panel panel-primary" id="pnlProduto">
-					<div class="panel-heading">
-						<h4>Cadastro de Produtos</h4>
+				<div class="card" id="pnlProduto">
+
+					<div class="card-header ">
+						<h4 class="text-dark">Cadastro de Produtos</h4>
 					</div>
 
-					<div class="panel-body">
+					<div class="card-body">
 
 						<div class="row">
 
@@ -58,7 +56,8 @@
 								</div>
 								<div class="col-sm-10">
 									<p:inputText id="descricao"
-										value="#{produtoBean.produto.descricao}" required="true" maxlength="50"
+										value="#{produtoBean.produto.descricao}" required="true"
+										maxlength="50"
 										requiredMessage="Informe a Descrição do Produto"
 										styleClass="form-control" placeholder="Descrição do Produto" />
 								</div>
@@ -73,8 +72,8 @@
 								</div>
 								<div class="col-sm-10">
 									<p:inputText id="marca" value="#{produtoBean.produto.marca}"
-										required="true" requiredMessage="Informe a Marca do Produto" maxlength="50"
-										styleClass="form-control" placeholder="Marca" />
+										required="true" requiredMessage="Informe a Marca do Produto"
+										maxlength="50" styleClass="form-control" placeholder="Marca" />
 								</div>
 							</div>
 							<!-- /form-group -->
@@ -107,9 +106,11 @@
 								</div>
 
 								<div class="col-sm-8">
-									<p:inputText value="#{produtoBean.quantidade}" required="true"
-										requiredMessage="Campo quantidade é Obrigatório" maxlength="20"
-										styleClass="form-control" placeholder="Quantidade" />
+									<p:inputText id="qtda" value="#{produtoBean.quantidade}"
+										required="true"
+										requiredMessage="Campo quantidade é Obrigatório"
+										maxlength="20" styleClass="form-control"
+										placeholder="Quantidade" />
 								</div>
 							</div>
 							<!-- /form-group -->
@@ -118,43 +119,53 @@
 								<div class="col-sm-4 control-label">
 									<h:outputLabel for="vlrUno" value="Valor de Custo" />
 								</div>
+
 								<div class="col-sm-8">
 									<div class="input-group">
-										<div class="input-group-addon">$</div>
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-md">R$</span>
+										</div>
+
 										<p:inputText id="vlrUno" placeholder="Valor de custo"
 											value="#{produtoBean.produto.valorCusto}" required="true"
 											requiredMessage="Informe o Valor de custo do Produto"
 											styleClass="form-control moeda">
-											<f:convertNumber maxFractionDigits="18" />
+											<f:convertNumber maxFractionDigits="18"
+												aria-describedby="basic-md" />
 										</p:inputText>
+
 									</div>
 								</div>
+
 							</div>
 
 							<!-- /form-group -->
 						</div>
 
+					</div>
+					<!-- /card-body -->
 
-						<!-- Butões -->
-						<div class="btn-gp">
+					<!-- Butões -->
+					<div class="card-footer">
 
-							<p:commandButton value="Novo" icon="ui-icon-plus"
-								styleClass="btn btn-default" action="#{produtoBean.novo}" />
+						<p:commandButton value="Novo" icon="ui-icon-plus"
+							styleClass="btn btn-outline-primary mr-2 p-2 text-dark"
+							action="#{produtoBean.novo}" />
 
-							<p:commandButton value="Salvar" icon="ui-icon-disk"
-								styleClass="btn btn-default"
-								action="#{produtoBean.saveOrUpdate}" update=":frmProduto"/>
+						<p:commandButton value="Salvar" icon="ui-icon-disk"
+							styleClass="btn btn-outline-success mr-2 p-2 text-dark"
+							action="#{produtoBean.saveOrUpdate}" update=":frmProduto" />
 
-							<p:commandButton value="Cancelar" icon="ui-icon-trash"
-								styleClass="btn btn-default" action="#{produtoBean.cancelar}"
-								immediate="true" />
-						</div>
+						<p:commandButton value="Cancelar" icon="ui-icon-trash"
+							styleClass="btn btn-outline-warning mr-2 p-2 text-dark"
+							action="#{produtoBean.cancelar}" immediate="true"  />
 
 					</div>
-					<!-- /panel-body -->
-				</div>
-				<!-- /panel -->
 
+				</div>
+				<!-- /card -->
+				<h:graphicImage library="img" name="inventario.png"
+					class="rounded mx-auto d-block mt-2" alt="..." style="height: 250px" />
 			</h:form> </section>
 		</div>
 		<!-- /container -->

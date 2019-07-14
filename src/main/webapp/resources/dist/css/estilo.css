@@ -3,13 +3,15 @@
 Skype: live:dowglasmaia
 LinkedIn: www.linkedin.com/in/dowglasmaia;
 */
+@import
+	url('https://fonts.googleapis.com/css?family=Concert+One|Macondo+Swash+Caps|Philosopher&display=swap')
+	;
 
 /*=====================layout===========================*/
-*  {
-    margin:0;
-    padding:0;
+* {
+	margin: 0;
+	padding: 0;
 }
-
 
 /*=====================Form e Butões===========================*/
 .login-form {
@@ -27,7 +29,6 @@ LinkedIn: www.linkedin.com/in/dowglasmaia;
 	margin: 20px 20px 20px 0px;
 	width: 100%;
 }
-
 
 .panel-body {
 	margin: 10px auto;
@@ -55,21 +56,45 @@ LinkedIn: www.linkedin.com/in/dowglasmaia;
 	border: 0px;
 	padding: 0px;
 	color: white;
-	font-family:sans-serif;
+	font-family: sans-serif;
 	margin: 0px;
 }
-
 
 .ui-widget .ui-dialog .ui-datatable {
 	background: none;
 }
 
-
-
 /*=====================Tipografia===========================*/
 h4 {
-	color: white;
 	text-align: justify;
 	font-size: 25px;
 	font: bold;
+	font-family: 'Concert One', cursive;
 }
+
+inputText {
+	font-family: 'Philosopher', sans-serif;
+}
+
+label {
+	font-family: 'Philosopher', sans-serif;
+}
+
+a {
+	font-family: 'Macondo Swash Caps', cursive;
+	font-size: 16px;
+}
+
+a:hover {
+	font-family: 'Macondo Swash Caps', cursive;
+	font-size: 15px;
+	color: #E0F8F7;
+}
+
+.ui-inputfield.ui-inputtext{
+	font-family: 'Philosopher', sans-serif;
+}
+
+
+
+
