@@ -24,8 +24,8 @@
 	<!-- Bootstrap -->
 	<h:outputStylesheet library="dist"
 		name="bootstrap/css/bootstrap.min.css" />
-		
-			<!-- my estilo -->
+
+	<!-- my estilo -->
 	<h:outputStylesheet library="dist" name="css/estilo.css" />
 
 	<!-- css skins -->
@@ -35,7 +35,7 @@
 	<link rel="shortcut icon" type="image/x-icon"
 		href="#{request.contextPath}/resources/img/favicon.png" />
 
-	
+
 
 	<title><ui:insert name="titulo"></ui:insert></title>
 
@@ -50,7 +50,7 @@
 			class="logo py-3" style="height: 70px !important"> <span
 			class="logo-mini">
 				<p>M</p>
-		</span> <span class="logo-lg"> <b>Maia</b> GYT Plus
+		</span> <span class="logo-lg"> <b>Maia</b> D.K Plus
 		</span>
 		</a> <nav class="navbar navbar-static-top " role="navigation"> <!-- Sidebar toggle button-->
 		<a href="#" class="sidebar-toggle" data-toggle="push-menu"
@@ -60,14 +60,11 @@
 			<ul class="nav navbar-nav">
 
 				<!-- User Account Menu -->
-				<li class="dropdown user user-menu">
-				<a href="#"> <h:graphicImage
+				<li class="dropdown user user-menu"><a href="#"> <h:graphicImage
 							library="img" name="user.png" styleClass="user-image"
 							alt="User Image">
-						</h:graphicImage> 
-					<span class="hidden-xs">Dowglas Maia</span>
-				</a>
-				</li>
+						</h:graphicImage> <span class="hidden-xs">Dowglas Maia</span>
+				</a></li>
 
 			</ul>
 		</div>
@@ -79,14 +76,10 @@
 			<li class="header text-center">MENU</li>
 
 			<!-- Optionally, you can add icons to the links -->
-			<li>
-			<a href="index.jsf">
-			<i class="fa fa-home"></i>
-			<span>Home</span></a>
+			<li><a href="index.jsf"> <i class="fa fa-home"></i> <span>Home</span></a>
 			</li>
 
-			<li class="treeview"><a href="#"> 
-			<i class="fa fa-link"></i>
+			<li class="treeview"><a href="#"> <i class="fa fa-link"></i>
 					<span>Cadastro</span> <span class="pull-right-container"> <i
 						class="fa fa-angle-left pull-right"></i>
 				</span>
@@ -94,17 +87,17 @@
 				<ul class="treeview-menu">
 					<li><a href="produtos.jsf"><i class="fa fa-user ml-3"></i>Produtos</a></li>
 					<li><a href="fornecedor.jsf"><i class="fa fa-inbox ml-3"></i>Fornecedores</a></li>
-					
-				</ul>
-			</li>
+
+				</ul></li>
 
 			<li class="treeview"><a href="#"><i class="fa fa-link"></i>
 					<span>Consultas</span> <span class="pull-right-container"> <i
 						class="fa fa-angle-left pull-right"></i>
 				</span> </a>
 				<ul class="treeview-menu">
-					<li><a href="listagem.jsf"><i class="fa fa-user ml-3"></i>Lista de Produtos</a></li>
-					
+					<li><a href="listagem.jsf"><i class="fa fa-user ml-3"></i>Lista
+							de Produtos</a></li>
+
 				</ul></li>
 
 			<li><a href="#"><i class="fa fa-link"></i> <span>Suporte</span></a>
@@ -117,37 +110,37 @@
 		<div class="content-wrapper">
 			<p:tooltip />
 			<!-- Mostra MSG PrimeFaces -->
-			
-			<!-- Main content -->			
-			<section class="content container-fluid mt-5"> 
-			<p:messages	id="messages" showDetail="false" closable="true" autoUpdate="true" />
-			<!-- MSG PrimeFaces --> 
-			
-			<ui:insert name="conteudo">
 
-			</ui:insert> 
-			
-			</section>
+			<!-- Main content -->
+			<section class="content container-fluid mt-5"> <p:messages
+				id="messages" showDetail="false" closable="true" autoUpdate="true" />
+			<!-- MSG PrimeFaces --> <ui:insert name="conteudo">
+
+			</ui:insert> </section>
 		</div>
 		<!-- /.content-wrapper -->
 
 		<!-- Main Footer -->
 		<footer class="main-footer"> <!-- To the right -->
-		
-		<div class="pull-right hidden-xs">Desenvolvidor por: Dowglas Maia
-	   </div>
 
-		<!-- Default to the left --> <strong>&copy; 2019 | <a
-			href="https://github.com/dowglasmaia" target="_blank">Maia Ti</a>.
-		</strong> Todos os direitos reservados 
-		
+		<div class="pull-right hidden-xs">
+			<p>Desenvolvidor por: Dowglas Maia</p>
+		</div>
+
+		<!-- Default to the left -->
+			<p>
+			<strong>&copy; 2019 | <a
+				href="https://github.com/dowglasmaia" target="_blank">Maia Ti</a> | 
+			</strong> Todos os direitos reservados
+			</p>
 		</footer>
-
+		
+		
 	</div>
 	<!-- ./wrapper -->
 
 
-<!-- Bootstrap 4.3 js -->
+	<!-- Bootstrap 4.3 js -->
 	<h:outputScript library="dist" name="bootstrap/js/bootstrap.min.js" />
 
 	<!-- AdminLTE App  js-->
@@ -155,7 +148,7 @@
 
 	<!-- Js Mask de Moeda -->
 	<h:outputScript library="dist" name="js/jquery.maskMoney.js" />
-	
+
 
 	<!--script para configura Capos de Moeda que usam a Class (moeda chamar no componete usando styleClass(moeda) -->
 	<script>

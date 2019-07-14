@@ -7,6 +7,9 @@ LinkedIn: www.linkedin.com/in/dowglasmaia;
 	url('https://fonts.googleapis.com/css?family=Concert+One|Macondo+Swash+Caps|Philosopher&display=swap')
 	;
 
+@import
+	url('https://fonts.googleapis.com/css?family=Rancho&display=swap');
+
 /*=====================layout===========================*/
 * {
 	margin: 0;
@@ -50,6 +53,16 @@ LinkedIn: www.linkedin.com/in/dowglasmaia;
 	margin-top: 30px;
 }
 
+.logo-lg {
+	font-family: 'Rancho', cursive;
+	font-size: 32px;
+}
+
+p {
+	font-family: 'Rancho', cursive;
+	font-size: 16px;
+}
+
 /*====Class do Dialog do Paimefaces====*/
 .ui-widget-header {
 	background: #4682B4;
@@ -91,10 +104,6 @@ a:hover {
 	color: #E0F8F7;
 }
 
-.ui-inputfield.ui-inputtext{
+.ui-inputfield.ui-inputtext {
 	font-family: 'Philosopher', sans-serif;
 }
-
-
-
-

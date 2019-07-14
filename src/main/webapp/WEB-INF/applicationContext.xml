@@ -28,7 +28,7 @@
 	<mvc:annotation-driven />
 
 	<!-- Define pagina inicial (ingnora a configuração do web.xml) -->
-	<mvc:view-controller path="/" view-name="login" />
+	<mvc:view-controller path="/" view-name="index" />
 
 	<!-- Define onde está localizada as views da aplicação, e qual a extenção 
 		das mesmas -->
