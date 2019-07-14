@@ -4,7 +4,7 @@
  * E-mail:dowglasmaia@live.com
  * 
  * -->
- 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -14,115 +14,120 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/template.xhtml">
-	
+
 	<ui:define name="titulo">Fornecedor</ui:define>
 
 	<ui:define name="conteudo">
-		
 
-	<div class="container">
-	
-			<section> 				
-			 <h:form id="frmFornecedor"
-				styleClass="form-horizontal">
 
-				<p:messages autoUpdate="true" />
+		<div class="container-fuild">
 
-				<div class="panel panel-primary">
+			<section>
+			 <h:form id="frmFornecedor"	styleClass="form-horizontal">
 
-					<div class="panel-heading">
-						<h4>Cadastro de Fornecedores</h4>
+				<div class="card">
+					<div class="card-header ">
+						<h4>
+							<i class="fa fa-clipboard mr-1" aria-hidden="true"></i> Cadastro
+							de Fornecedores
+						</h4>
 					</div>
 
-					<div class="panel-body">
-
+					<div class="card-body">
 						<div class="row">
-							<div class="form-group col-sm-6">
+							<div class="form-group col-md-6">
 								<div class="col-sm-2 control-label">
 									<h:outputLabel for="nome" value="Nome" />
 								</div>
-
 								<div class="col-sm-10">
 									<p:inputText id="nome"
 										value="#{fornecedorBean.fornecedor.nome}"
-										styleClass="form-control" placeholder="Nome do Fornecedor"
+										styleClass="form-control" placeholder="Fornecedor"
 										required="true" requiredMessage="campo nome obrigatório" />
 								</div>
 							</div>
 							<!-- /form-group -->
 
-							<div class="form-group col-sm-6">
-								<div class="col-sm-2 control-label">
-									<p:outputLabel for="email" value="e-Mail" />
+							<div class="form-group col-md-6">
+								<div class="col-sm-3 control-label">
+									<h:outputLabel for="email" value="e-Mail" />
 								</div>
-
-								<div class="col-sm-10">
+								<div class="col-sm-9">
 									<div class="input-group">
-										<span class="input-group-addon">@</span>
+										<div class="input-group-prepend">
+											<span class="input-group-text">@</span>
+										</div>
+
 										<p:inputText id="email"
 											value="#{fornecedorBean.fornecedor.email}"
 											styleClass="form-control" placeholder="email" required="true"
-											requiredMessage="campo e-Mail obrigatório" />
+											requiredMessage="Campo e-mail é obrigatório"
+											validatorMessage="e-Mail inválido!">
+											<f:validateRegex
+										pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" />	
+										</p:inputText>
+										<!-- <h:message for="email" /> -->
+										
 									</div>
 								</div>
 							</div>
-							<!-- /form-group -->
 						</div>
 
 						<div class="row">
-							<div class="form-group col-sm-6">
-								<div class="col-sm-3 control-label">
+							<div class="form-group col-md-6">
+								<div class="col-sm-2 control-label">
 									<h:outputLabel for="representante" value="Representante" />
 								</div>
-
-								<div class="col-sm-9">
+								<div class="col-sm-10">
 									<p:inputText id="representante"
 										value="#{fornecedorBean.fornecedor.representatne}"
-										styleClass="form-control" placeholder="Nome do Representante"
+										styleClass="form-control" placeholder="Representante"
 										required="true"
 										requiredMessage="Nome do Representante é obrigatório" />
 								</div>
 							</div>
 							<!-- /form-group -->
 
-							<div class="form-group col-sm-6">
+							<div class="form-group col-md-4">
 								<div class="col-sm-2 control-label">
 									<h:outputLabel for="contato" value="Telefone" />
 								</div>
-
 								<div class="col-sm-10">
 									<p:inputMask mask="(99)9 9999-9999" id="contato"
-									
 										value="#{fornecedorBean.fornecedor.telefone}"
-										styleClass="form-control" placeholder="Telefone para contato"
+										styleClass="form-control" placeholder="Telefone"
 										required="true" requiredMessage="campo telefone é obrigatório"
 										validatorMessage="true" />
 								</div>
 							</div>
 							<!-- /form-group -->
+
 						</div>
 
-						<!-- Butões -->
-						<div class="btn-gp">
-							<div class="container-fluid">
-								<p:commandButton value="Novo" action="#{fornecedorBean.novo()}"
-									icon="ui-icon-plus" styleClass="btn btn-default" />
+					</div>
+					<!-- /panel-body -->
+					
+					<!-- Butões -->
+					<div class="card-footer">
+						<div class="container-fluid">
+							<p:commandButton value="Novo" action="#{fornecedorBean.novo}"
+								icon="ui-icon-plus" immediate="true"
+								styleClass="btn btn-outline-primary mr-2 p-1 text-dark" />
 
-								<p:commandButton value="Salvar"
-									action="#{fornecedorBean.saveOrUpdate()}" icon="ui-icon-disk"
-									styleClass="btn btn-default"/>
+							<p:commandButton value="Salvar"
+								action="#{fornecedorBean.saveOrUpdate}" icon="ui-icon-disk"
+								styleClass="btn btn-outline-success mr-2 p-1 text-dark"
+								update=":frmFornecedor :messages" />
 
-								<p:commandButton value="Cancelar" icon="ui-icon-trash"
-									styleClass="btn btn-default"  />
-							</div>
+							<p:commandButton value="Cancelar" icon="ui-icon-trash"
+								styleClass="btn btn-outline-warning mr-2 p-1 text-dark" />
 						</div>
+					</div>
+				</div>
+				<!-- /panel -->
 
-					</div><!-- /panel-body -->
-				</div><!-- /panel -->
 
-
-			</h:form>
-		 </section>
+			</h:form> </section>
 		</div>
 	</ui:define>
 

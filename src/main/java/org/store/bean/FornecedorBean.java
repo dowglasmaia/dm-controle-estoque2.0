@@ -8,9 +8,11 @@ import javax.faces.view.ViewScoped;
 
 import org.omnifaces.util.Messages;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.store.dao.FornecedorDAO;
 import org.store.entity.Fornecedor;
+import org.store.entity.Produto;
 
 /*
  * Autor: Dowglas Maia
@@ -19,25 +21,26 @@ import org.store.entity.Fornecedor;
  * 
  * */
 
-
-@ViewScoped
+@Scope("request")
 @Controller
 public class FornecedorBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
 	private FornecedorDAO fDao;
-	
+
 	private Fornecedor fornecedor;
+
 	public FornecedorBean() {
-		
 		this.fornecedor = new Fornecedor();
 	}
 
 	private List<Fornecedor> fornecedores = new ArrayList<>();
 
-	public void novo() {
-		fornecedor = new Fornecedor();
+	// Novo
+	public String novo() {
+		this.fornecedor = new Fornecedor();
+		return "/pages/fornecedor?faces-redirect=true";
 	}
 
 	// Salvar ou Atualiza de acordo com a Regra
@@ -59,12 +62,13 @@ public class FornecedorBean implements Serializable {
 	}
 
 	// listar
-	public void listarFornecedores() {
+	public List<Fornecedor> listarFornecedores() {
 		try {
-			fornecedores = fDao.FindAll();
+			return this.fornecedores = fDao.FindAll();
 		} catch (Exception e) {
 			Messages.addGlobalError("Erro ao Realizar Consulta de Fornecedores!");
 			e.printStackTrace();
+			return null;
 		}
 	}
 

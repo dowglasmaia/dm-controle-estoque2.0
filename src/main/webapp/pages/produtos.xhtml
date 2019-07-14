@@ -21,7 +21,7 @@
 
 	<ui:define name="conteudo">
 
-		<div class="container">
+		<div class="container-fuild">
 
 			<section> 	
 			
@@ -32,7 +32,7 @@
 				<div class="card" id="pnlProduto">
 
 					<div class="card-header ">					
-					<h4 class="text-dark"><i class="fa fa-clipboard mr-1" aria-hidden="true"></i>Cadastro de Produtos</h4>																					
+						<h4 class="text-dark"><i class="fa fa-clipboard mr-1" aria-hidden="true"></i>Cadastro de Produtos</h4>																					
 					</div>
 
 					<div class="card-body">
@@ -125,7 +125,9 @@
 								</div>
 
 								<div class="col-sm-8">
+									
 									<div class="input-group">
+										
 										<div class="input-group-prepend">
 											<span class="input-group-text" id="basic-md">R$</span>
 										</div>
@@ -153,15 +155,15 @@
 					<div class="card-footer">
 
 						<p:commandButton value="Novo" icon="ui-icon-plus"
-							styleClass="btn btn-outline-primary mr-2 p-2 text-dark"
+							styleClass="btn btn-outline-primary mr-2 p-1 text-dark"
 							action="#{produtoBean.novo}" immediate="true" />
 
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
-							styleClass="btn btn-outline-success mr-2 p-2 text-dark"
+							styleClass="btn btn-outline-success mr-2 p-1 text-dark"
 							action="#{produtoBean.saveOrUpdate}" update=":frmProduto :messages" />
 
 						<p:commandButton value="Cancelar" icon="ui-icon-trash"
-							styleClass="btn btn-outline-warning mr-2 p-2 text-dark"
+							styleClass="btn btn-outline-warning mr-2 p-1 text-dark"
 							action="#{produtoBean.cancelar}" immediate="true"  />
 
 					</div>
