@@ -17,6 +17,8 @@ public interface GenereciDAOInterface<E> extends Serializable {
 	List<E> FindAll() throws Exception;
 
 	List<E> findByName(String nome) throws Exception;
+	
+	E findByLogin(String docCredencial, String senha);
 
 	List<E> findByDate(LocalDate entrada, LocalDate saida) throws Exception;
 

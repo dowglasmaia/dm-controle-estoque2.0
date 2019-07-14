@@ -25,6 +25,7 @@
 			
 			<section> 
 			<p:messages autoUpdate="true" />
+			
 			 <h:form id="frmProduto"
 				styleClass="form-horizontal">
 				<h:inputHidden value="#{produtoBean.produto.id}" />
@@ -142,7 +143,7 @@
 
 							<p:commandButton value="Salvar" icon="ui-icon-disk"
 								styleClass="btn btn-default"
-								action="#{produtoBean.saveOrUpdate}" />
+								action="#{produtoBean.saveOrUpdate}" update=":frmProduto"/>
 
 							<p:commandButton value="Cancelar" icon="ui-icon-trash"
 								styleClass="btn btn-default" action="#{produtoBean.cancelar}"

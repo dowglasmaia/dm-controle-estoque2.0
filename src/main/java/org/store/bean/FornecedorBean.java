@@ -6,10 +6,9 @@ import java.util.List;
 
 import javax.faces.view.ViewScoped;
 
-
 import org.omnifaces.util.Messages;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.store.dao.FornecedorDAO;
 import org.store.entity.Fornecedor;
 
@@ -20,16 +19,20 @@ import org.store.entity.Fornecedor;
  * 
  * */
 
-@Component
+
 @ViewScoped
+@Controller
 public class FornecedorBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
 	private FornecedorDAO fDao;
-
-	@Autowired
+	
 	private Fornecedor fornecedor;
+	public FornecedorBean() {
+		
+		this.fornecedor = new Fornecedor();
+	}
 
 	private List<Fornecedor> fornecedores = new ArrayList<>();
 

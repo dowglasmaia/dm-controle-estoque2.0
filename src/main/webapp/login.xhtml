@@ -34,7 +34,7 @@
 
 			<div class="panel panel-primary">
 				<div class="panel-heading">
-					<h3>Autenticação de Usuário</h3>
+					<h3>Entre com suas credencias</h3>
 				</div>
 
 
@@ -44,13 +44,13 @@
 					<h:form>
 						<div class="form-group">
 							<h:outputLabel value="CPF" styleClass="control-label"/>
-							<p:inputText value="#{usuarioBean.cpf}" styleClass="form-control" placeholder="Digite seu CPF = 120" />
+							<p:inputText value="#{usuarioBean.usuario.cpf}" styleClass="form-control" placeholder="Digite seu CPF = 120" />
 							 
 						</div>
 						
 						<div class="form-group">							
 							<h:outputLabel value="Senha" styleClass="control-label"/>
-							<p:password value="#{usuarioBean.senha}" styleClass="form-control"  placeholder="Digite sua Senha = 120"/>
+							<p:password value="#{usuarioBean.usuario.senha}" styleClass="form-control"  placeholder="Digite sua Senha = 120"/>
 						</div>
 
 						<h:commandButton action="#{usuarioBean.logar()}" value="Entra no Sistema" styleClass="btn-logar" />

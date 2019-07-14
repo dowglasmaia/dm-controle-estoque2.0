@@ -10,6 +10,7 @@ import javax.faces.view.ViewScoped;
 import org.omnifaces.util.Messages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.store.dao.FornecedorDAO;
 import org.store.dao.ProdutoDAO;
 import org.store.entity.Fornecedor;
@@ -21,8 +22,9 @@ import org.store.entity.Produto;
  * E-mail:dowglasmaia@live.com
  * 
  * */
-@Component
+
 @ViewScoped
+@Controller
 public class ProdutoBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -32,7 +34,11 @@ public class ProdutoBean implements Serializable {
 	@Autowired
 	private FornecedorDAO fDao;
 
-	private Produto produto = new Produto();
+	private Produto produto; 
+	
+	public ProdutoBean() {
+		this.produto = new Produto();
+	}
 
 	private Integer qtdaSaida;
 	private Integer quantidade;
@@ -58,21 +64,24 @@ public class ProdutoBean implements Serializable {
 	}
 
 	// Salvar
-	public void saveOrUpdate() {
+	public String saveOrUpdate() {
 		
 		try {
 			if (this.produto.getId() != null && produto.getId() != 0) {
 				produto.setEstoque(quantidade + produto.getEstoque());
 				pDao.update(produto);
 				Messages.addGlobalWarn("Produto Atualizado com Sucesso!");
+				return "/pages/listagem?faces-redirect=true";
 			} else {
 				produto.setEstoque(quantidade);
 				pDao.save(produto);
 				Messages.addGlobalInfo("Produto Salvo com Sucesso!");
+				return "/pages/listagem?faces-redirect=true";
 			}
 		} catch (Exception e) {
 			Messages.addGlobalError("Erro ao Tentar Salvar ou Atualizar o Produto!");
 			e.printStackTrace();
+			return null;
 		}
 		// return "/pages/listagem?faces-redirect=true";
 	}

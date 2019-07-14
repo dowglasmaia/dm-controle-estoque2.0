@@ -21,14 +21,14 @@
 	<!-- Informa o pacote onde o Spring ira buscar as classes anotadas (@Controller, 
 		@Service...) -->
 	<context:component-scan
-		base-package="jsf_spring" />
+		base-package="org.store" />
 
 
 	<!-- Diz ao Spring que ele deve usar a configuração das annotations -->
 	<mvc:annotation-driven />
 
 	<!-- Define pagina inicial (ingnora a configuração do web.xml) -->
-	<mvc:view-controller path="/" view-name="index" />
+	<mvc:view-controller path="/" view-name="login" />
 
 	<!-- Define onde está localizada as views da aplicação, e qual a extenção 
 		das mesmas -->

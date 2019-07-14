@@ -133,4 +133,41 @@ public class GenericDAO<E> implements GenereciDAOInterface<E> {
 		return null;
 	}
 
+	@Override
+	public E findByLogin(String docCredencial, String senha) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		
+		
+		return null;
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

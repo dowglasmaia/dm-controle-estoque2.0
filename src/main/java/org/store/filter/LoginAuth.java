@@ -8,7 +8,7 @@ import javax.servlet.http.*;
 
 import org.store.entity.Usuario;
 
-@WebFilter("/login.xhtml")
+@WebFilter("/login.jsf")
 public class LoginAuth implements Filter {
 
 	public LoginAuth() {
@@ -32,7 +32,7 @@ public class LoginAuth implements Filter {
 		if (usuario == null) {
 			chain.doFilter(request, response);
 		} else {
-			res.sendRedirect(req.getContextPath() + "/pages/listagem.xhtml");
+			res.sendRedirect(req.getContextPath() + "/pages/listagem.jsf");
 		}
 
 	}

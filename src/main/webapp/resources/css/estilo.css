@@ -40,13 +40,14 @@ section {
 
 nav.navbar-transparente {
 	padding: 10px 0px;
-	background: rgba(0, 0, 0, 0.4);	/* deixa a barra de navegação transparente*/
+	background: rgba(0, 0, 0, 0.3);	/* deixa a barra de navegação transparente*/
 	border: none;
+	
 }
 
 .navbar-inverse .navbar-nav>li>a:hover, footer .nav a:hover {
 	/* Sobrescrevendo o stilo padrão do link do boostrap*/
-	color: #87CEEB;
+	color: #004080;
 	background: none;
 }
 

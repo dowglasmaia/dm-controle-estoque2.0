@@ -32,7 +32,7 @@ public class WebAuth implements Filter {
 		Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
 
 		if (usuario == null) {
-			res.sendRedirect(req.getContextPath() + "/login.xhtml");
+			res.sendRedirect(req.getContextPath() + "/login.jsf");
 
 		} else 
 			chain.doFilter(request, response);
