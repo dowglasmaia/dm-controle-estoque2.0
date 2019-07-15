@@ -24,7 +24,7 @@ import org.store.entity.Produto;
  * 
  * */
 
-@Scope("request")
+@Scope("session")
 @Controller
 public class ProdutoBean implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -58,12 +58,13 @@ public class ProdutoBean implements Serializable {
 
 	// Cancelar Baixar
 	public String cancelarBaixa() {
-		novo();
+		this.produto = new Produto();
 		return "/pages/listagem?faces-redirect=true";
 	}
 
 	// Cancelar
 	public String cancelar() {
+		this.produto = new Produto();
 		return "/pages/produtos?faces-redirect=true";
 	}
 
@@ -127,12 +128,11 @@ public class ProdutoBean implements Serializable {
 
 	// Atualiza Estoque
 	public void baixarEstoque() {
-		if (produto.getEstoque() == 0 || qtdaSaida >= produto.getEstoque()) {
-			Messages.addGlobalFatal("Erro ao Tentar Atualizar Estoque, revise os dados.");
-
+		if (qtdaSaida == 0 || qtdaSaida > produto.getEstoque()) {
+			Messages.addGlobalFatal("Erro ao Tentar Atualizar Estoque, revise a qauntidade informada: " + qtdaSaida);
 		} else {
-			produto.setEstoque(produto.getEstoque() - qtdaSaida);
 			try {
+				produto.setEstoque(produto.getEstoque() - qtdaSaida);
 				pDao.update(produto);
 				Messages.addGlobalWarn("Estoque Atualizado com Sucesso!");
 
