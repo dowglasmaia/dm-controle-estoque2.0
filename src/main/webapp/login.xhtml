@@ -39,10 +39,10 @@
 
 </h:head>
 
-<h:body>
+<h:body class="bg-light">
 
 	<div class="container">
-		<div class="login-form">
+		<div class="login-form bg-light">
 
 			<h6 class="text-center mb-5">Seja bem Vindo!</h6>
 
@@ -57,29 +57,29 @@
 					<p:messages autoUpdate="true" />
 
 					<h:form>
-						<div class="form-group">
+						<div class="form-group mb-3 p-2">
 							<h:outputLabel value="Usuario" styleClass="control-label" />
 							<p:inputText value="#{usuarioBean.usuario.cpf}"
-								styleClass="form-control" placeholder="entre com seu CPF  " />
+								styleClass="form-control p-3" placeholder="entre com seu CPF  " />
 
 						</div>
 
-						<div class="form-group">
+						<div class="form-group mb-3 p-2">
 							<h:outputLabel value="Senha" styleClass="control-label" />
 							<p:password value="#{usuarioBean.usuario.senha}"
-								styleClass="form-control" placeholder="entre com seua Senhas" />
+								styleClass="form-control p-3" placeholder="entre com seua Senhas" />
 						</div>
 
 						<h:commandButton action="#{usuarioBean.logar()}"
-							value="Entra no Sistema"
-							styleClass="btn btn-outline-primary btn-block btn-lg" />
+							value="Login"
+							styleClass="btn btn-outline-primary btn-block btn-lg mb-4 mt-4 p-2" />
 
 					</h:form>
 				</div>
 			</div>
 			<div class="text-center mt-5">
-				<span>Para realizar os teste, entre com o usuario-<strong>
-						120,</strong> e senha <strong>120.</strong></span>
+				<h6>Para realizar os teste, entre com o usuario-<strong>
+						120,</strong> e senha <strong>120.</strong></h6>
 			</div>
 		</div>
 	</div>

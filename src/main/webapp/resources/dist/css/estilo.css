@@ -33,16 +33,19 @@ LinkedIn: www.linkedin.com/in/dowglasmaia;
 	width: 100%;
 }
 
+.btn {
+	font-family: 'Rancho', cursive;
+}
+
 .label-dk {
 	text-align: right;
 }
 
-.btn-logout{
+.btn-logout {
 	position: absolute;
-	min-width:229px;
-	text-align:center;
+	min-width: 229px;
+	text-align: center;
 	bottom: 0;
-	
 }
 
 .btn-logar {
@@ -82,8 +85,9 @@ h2 {
 	margin-top: 2px;
 }
 
-.ui-button.ui-widget.ui-state-default.ui-corner-all{
+.ui-button.ui-widget.ui-state-default.ui-corner-all {
 	/*background: none !important; */
+	
 }
 
 .ui-widget .ui-dialog .ui-datatable {
