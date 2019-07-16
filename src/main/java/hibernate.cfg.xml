@@ -7,9 +7,9 @@
     
        <!-- Configurações de Conexão com o Banco de Dados -->
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/gestao?createDatabaseIfNotExist=true</property>
-		<property name="connection.username">root</property>
-		<property name="connection.password">maia</property>
+		<property name="connection.url">jdbc:mysql://estoque.cbigi4uoxflt.us-east-2.rds.amazonaws.com:3306/dbestoque?serverTimezone=America/Sao_Paulo</property>
+		<property name="connection.username"></property>
+		<property name="connection.password"></property>
 		
 		<property name="hibernate.transactio.auto_close_session">true</property> <!-- Fecha a sessão automaticamento apos uma execução  -->
 		<property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>			

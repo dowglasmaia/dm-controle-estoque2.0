@@ -42,7 +42,7 @@ public class UsuarioBean implements Serializable {
 						.getSession(false);
 				session.setAttribute("usuarioLogado", usuario); // Cria uma Sessão Valida para o Usuario
 
-				return "/pages/listagem?faces-redirect=true";
+				return "/pages/index?faces-redirect=true";
 			}
 			return null;
 		} catch (Throwable e) {

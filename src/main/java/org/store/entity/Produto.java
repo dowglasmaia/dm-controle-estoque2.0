@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /*
  * Autor: Dowglas Maia
@@ -22,12 +23,18 @@ public class Produto implements Serializable {
 	@Column(length = 16, unique = true)
 	private String SKU;
 
+	
 	@Column(length = 50)
 	private String descricao;
 
 	@Column(length = 50)
 	private String marca;
+	
+	private Integer quantidade;
+	
+	private Integer qtdaSaida;
 
+	@NotNull(message ="Informe um Fornecedor")
 	@ManyToOne
 	private Fornecedor fornecedor;
 
@@ -94,6 +101,25 @@ public class Produto implements Serializable {
 
 	public void setSKU(String sKU) {
 		SKU = sKU;
+	}
+
+	
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
+	
+	
+
+	public Integer getQtdaSaida() {
+		return qtdaSaida;
+	}
+
+	public void setQtdaSaida(Integer qtdaSaida) {
+		this.qtdaSaida = qtdaSaida;
 	}
 
 	@Override

@@ -14,6 +14,9 @@
 		<f:viewParam
 			name="Linha Apenas para resolvendo o excesso de inicializção, porque Não sei explicar rsrs" />
 
+		<f:event listener="#{produtoBean.novo()}" type="preRenderView">
+		</f:event>
+
 		<f:event listener="#{produtoBean.listarFornecedores()}"
 			type="preRenderView">
 		</f:event>
@@ -23,16 +26,18 @@
 
 		<div class="container-fuild">
 
-			<section> 	
-			
-			<h:form
-				id="frmProduto" styleClass="form-horizontal">
+			<section> 
+			<h:form id="frmProduto"
+				styleClass="form-horizontal">
 				<h:inputHidden value="#{produtoBean.produto.id}" />
 
 				<div class="card" id="pnlProduto">
 
-					<div class="card-header ">					
-						<h4 class="text-dark"><i class="fa fa-clipboard mr-1" aria-hidden="true"></i>Cadastro de Produtos</h4>																					
+					<div class="card-header ">
+						<h4 class="text-dark">
+							<i class="fa fa-clipboard mr-1" aria-hidden="true"></i>Cadastro
+							de Produtos
+						</h4>
 					</div>
 
 					<div class="card-body">
@@ -106,16 +111,15 @@
 								</div>
 
 								<div class="col-sm-8">
-									<p:inputText id="qtda" value="#{produtoBean.quantidade}"
-										required="true" 
+									<p:inputText id="qtda"
+										value="#{produtoBean.produto.quantidade}" required="true"
 										requiredMessage="Campo quantidade é Obrigatório"
 										converterMessage="O Campo quantidade deve ser somente numeros!"
-										styleClass="form-control"
-										placeholder="Quantidae " >								
-									
+										styleClass="form-control" placeholder="Quantidae ">
+
 									</p:inputText>
-								</div>								
-								<p:keyFilter for="qtda" mask="num"/>
+								</div>
+								<p:keyFilter for="qtda" mask="num" />
 							</div>
 							<!-- /form-group -->
 
@@ -125,9 +129,9 @@
 								</div>
 
 								<div class="col-sm-8">
-									
+
 									<div class="input-group">
-										
+
 										<div class="input-group-prepend">
 											<span class="input-group-text" id="basic-md">R$</span>
 										</div>
@@ -160,19 +164,19 @@
 
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
 							styleClass="btn btn-outline-success mr-2 p-1 text-dark"
-							action="#{produtoBean.saveOrUpdate}" update=":frmProduto :messages" />
+							action="#{produtoBean.saveOrUpdate}"
+							update=":frmProduto :messages" />
 
 						<p:commandButton value="Cancelar" icon="ui-icon-trash"
 							styleClass="btn btn-outline-warning mr-2 p-1 text-dark"
-							action="#{produtoBean.cancelar}" immediate="true"  />
+							action="#{produtoBean.cancelar}" immediate="true" />
 
 					</div>
 
 				</div>
 				<!-- /card -->
-				
-			</h:form> 
-			</section>
+
+			</h:form> </section>
 		</div>
 		<!-- /container -->
 	</ui:define>

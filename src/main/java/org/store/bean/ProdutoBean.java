@@ -4,11 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 
 import org.omnifaces.util.Messages;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.store.dao.FornecedorDAO;
 import org.store.dao.ProdutoDAO;
@@ -22,7 +22,7 @@ import org.store.entity.Produto;
  * 
  * */
 
-@Scope("session")
+@ViewScoped
 @Controller
 public class ProdutoBean implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -35,18 +35,18 @@ public class ProdutoBean implements Serializable {
 
 	private List<Fornecedor> fornecedors = new ArrayList<>();
 
-	private Produto produto;
+	private Produto produto;	
+
+	
+	private List<Fornecedor> fornecedores = new ArrayList<>();
+	private List<Produto> produtos = new ArrayList<>();
+
 
 	//
 	public ProdutoBean() {
 		this.produto = new Produto();
+		
 	}
-
-	private Integer qtdaSaida;
-	private Integer quantidade;
-
-	private List<Fornecedor> fornecedores = new ArrayList<>();
-	private List<Produto> produtos = new ArrayList<>();
 
 	// Novo
 	public String novo() {
@@ -71,13 +71,13 @@ public class ProdutoBean implements Serializable {
 
 		try {
 			if (this.produto.getId() != null && produto.getId() != 0) {
-				produto.setEstoque(quantidade + produto.getEstoque());
+				produto.setEstoque(produto.getQuantidade() + produto.getEstoque());
 				pDao.update(produto);
 				Messages.addGlobalWarn("Produto Atualizado com Sucesso!");
 				this.produto = new Produto();
 				// return "/pages/listagem?faces-redirect=true";
 			} else {
-				produto.setEstoque(quantidade);
+				produto.setEstoque(produto.getQuantidade());
 				pDao.save(produto);
 				Messages.addGlobalInfo("Produto Salvo com Sucesso!");
 				this.produto = new Produto();
@@ -92,7 +92,7 @@ public class ProdutoBean implements Serializable {
 	}
 
 	// Listar Todos
-	public List<Produto> ListarTodos() {
+	public List<Produto> ListarTodos() {		
 		try {
 			return produtos = pDao.FindAll();
 		} catch (Exception e) {
@@ -127,19 +127,22 @@ public class ProdutoBean implements Serializable {
 	}
 
 	// Atualiza Estoque
-	public void baixarEstoque() {
-		if (qtdaSaida == 0 || qtdaSaida > produto.getEstoque()) {
-			Messages.addGlobalFatal("Erro ao Tentar Atualizar Estoque, revise a qauntidade informada: " + qtdaSaida);
+	public String baixarEstoque() {
+		if (this.produto.getQtdaSaida() == 0 || this.produto.getQtdaSaida() > produto.getEstoque()) {
+			Messages.addGlobalFatal("Erro ao Tentar Atualizar Estoque, revise a qauntidade informada: " + this.produto.getQtdaSaida());			
+			return "";
 		} else {
 			try {
-				produto.setEstoque(produto.getEstoque() - qtdaSaida);
+				produto.setEstoque(produto.getEstoque() - this.produto.getQtdaSaida());
 				pDao.update(produto);
-				Messages.addGlobalWarn("Estoque Atualizado com Sucesso!");
+				Messages.addGlobalWarn("Estoque Atualizado com Sucesso!");				
+				return "";
 
 			} catch (Exception e) {
 				Messages.addGlobalWarn("Erro ao Tentar Atualizar Estoque!");
 				e.printStackTrace();
-			}
+				return "";			}
+			
 		}
 
 	}
@@ -148,7 +151,10 @@ public class ProdutoBean implements Serializable {
 	// Pegando o produto Selecionado
 	public void saidaPro(ActionEvent evento) {		
 		produto = (Produto) evento.getComponent().getAttributes().get("produtoSelecionado");
+		
 	}
+	
+	
 
 	// **Getters e Setters**//
 	public Produto getProduto() {
@@ -159,13 +165,6 @@ public class ProdutoBean implements Serializable {
 		this.produto = produto;
 	}
 
-	public Integer getQtdaSaida() {
-		return qtdaSaida;
-	}
-
-	public void setQtdaSaida(Integer qtdaSaida) {
-		this.qtdaSaida = qtdaSaida;
-	}
 
 	public List<Fornecedor> getFornecedores() {
 		return fornecedores;
@@ -173,14 +172,6 @@ public class ProdutoBean implements Serializable {
 
 	public void setFornecedores(List<Fornecedor> fornecedores) {
 		this.fornecedores = fornecedores;
-	}
-
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
 	}
 
 	public List<Produto> getProdutos() {
