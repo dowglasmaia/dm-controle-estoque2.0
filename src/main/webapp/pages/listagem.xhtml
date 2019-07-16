@@ -38,9 +38,10 @@
 							<div class="table-responsive">
 
 								<h:dataTable id="dtlListagem" value="#{produtoBean.produtos}"
-									styleClass="table" widgetVar="proTable" var="produto"
-									emptyMessage="nenhum registro encontrado" reflow="true"
-									paginator="true" paginatorPosition="bottom" rows="10"  >
+									styleClass="table table-striped" widgetVar="proTable"
+									var="produto" emptyMessage="nenhum registro encontrado"
+									reflow="true" paginator="true" paginatorPosition="bottom"
+									rows="10">
 
 									<h:column>
 										<f:facet name="header">
@@ -87,7 +88,7 @@
 												style="width: 80px" />
 										</f:facet>
 										<p:commandButton icon="ui-icon-refresh"
-											style="border:0px; background:none;"
+											styleClass="btn btn-outline-warning p-1 text-dark btn-block"
 											update=":frmDialog:pnlProduto"
 											oncomplete="PF('proDialog').show()" title="Atualizar">
 											<f:setPropertyActionListener value="#{produto}"
