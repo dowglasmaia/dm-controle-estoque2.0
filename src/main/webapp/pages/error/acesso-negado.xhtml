@@ -1,27 +1,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template.xhtml">
 
+	<ui:define name="titulo">Maya System-404</ui:define>
 
+	<ui:define name="conteudo">
 
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Error</title>
-</h:head>
+		<div class="container">
+			<section> <h:form>
 
-<h:body>
-	<b:container>
-		<h:form>
-			<h2>Acesso Negado</h2>
-			
-			<h:commandLink  value="Retornar para Pagina de Listagem"  onclick="../listagem.xhtml"/>
-			
-		</h:form>
-	</b:container>
-</h:body>
-</html>
+				<div class="container-fluid text-center m-4">
+					<h:graphicImage library="img" name="acesso-negado.jpg"
+						styleClass="img-fluid p-2 " alt="Responsive image" />
+
+					<h2 class="mt-4">Acesso Negado!</h2>
+					<a href="../index.jsf">Retornar para Pagina Principal</a>
+
+				</div>
+
+			</h:form> </section>
+		</div>
+		<!-- /container -->
+	</ui:define>
+
+</ui:composition>

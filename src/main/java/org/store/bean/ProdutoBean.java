@@ -5,13 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.event.ActionEvent;
-import javax.faces.view.ViewScoped;
 
 import org.omnifaces.util.Messages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.context.annotation.RequestScope;
 import org.store.dao.FornecedorDAO;
 import org.store.dao.ProdutoDAO;
 import org.store.entity.Fornecedor;
@@ -144,7 +142,9 @@ public class ProdutoBean implements Serializable {
 
 	}
 
-	public void saidaPro(ActionEvent evento) {
+	
+	// Pegando o produto Selecionado
+	public void saidaPro(ActionEvent evento) {		
 		produto = (Produto) evento.getComponent().getAttributes().get("produtoSelecionado");
 	}
 

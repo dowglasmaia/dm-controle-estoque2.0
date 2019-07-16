@@ -70,6 +70,7 @@
 											oncomplete="PF('proDialog').show()" title="Atualizar">
 											<f:setPropertyActionListener value="#{produto}"
 												target="#{produtoBean.produto}" />
+												
 										</p:commandButton>
 									</p:column>
 
@@ -102,13 +103,6 @@
 							<div class="col">
 								<label>Descrição</label>
 								<h:outputText value="#{produtoBean.produto.descricao}"
-									styleClass="form-control" />
-
-							</div>
-
-							<div class="col">
-								<h:outputLabel value="Est. Atual" />
-								<h:outputText value="#{produtoBean.produto.estoque}"
 									styleClass="form-control" />
 
 							</div>

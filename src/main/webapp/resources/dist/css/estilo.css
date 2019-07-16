@@ -61,6 +61,11 @@ p {
 	font-size: 16px;
 }
 
+h2 {
+	font-family: 'Rancho', cursive;
+	font-size: 24px;
+}
+
 /*====Class do Dialog do Paimefaces====*/
 .ui-widget-header {
 	background: none;
