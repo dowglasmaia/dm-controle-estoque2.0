@@ -3,37 +3,49 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
+	
 	<display-name>store</display-name>
+	
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
+	
 	<error-page>
 		<error-code>404</error-code>
 		<location>/pages/error/error.xhtml</location>
 	</error-page>
+	
 	<error-page>
 		<error-code>500</error-code>
 		<location>/pages/error/error.xhtml</location>
 	</error-page>
+	
 	<context-param>
 		<param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
 		<param-value>true</param-value>
 	</context-param>
+	
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
 
-
+	<!-- Ativando o Font Icons com Primefaces -->
+	<context-param>
+		<param-name>primefaces.FONT_AWESOME</param-name>
+		<param-value>true</param-value>
+	</context-param>
 
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
 	<welcome-file-list>
 		<welcome-file>login.xhtml</welcome-file>
 	</welcome-file-list>
+	
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
@@ -60,11 +72,11 @@
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
-
-	<!-- Ativando o Font Icons com Primefaces -->
-	<context-param>
-		<param-name>primefaces.FONT_AWESOME</param-name>
-		<param-value>true</param-value>
-	</context-param>
+	
+	<!--  Carregamento do Hibernate - com a Class ContextListener -->
+	<listener>
+		<listener-class>org.store.util.ContextListener</listener-class>
+	</listener>
 
 </web-app>
+

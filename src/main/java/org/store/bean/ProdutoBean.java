@@ -74,11 +74,13 @@ public class ProdutoBean implements Serializable {
 				produto.setEstoque(quantidade + produto.getEstoque());
 				pDao.update(produto);
 				Messages.addGlobalWarn("Produto Atualizado com Sucesso!");
+				this.produto = new Produto();
 				// return "/pages/listagem?faces-redirect=true";
 			} else {
 				produto.setEstoque(quantidade);
 				pDao.save(produto);
 				Messages.addGlobalInfo("Produto Salvo com Sucesso!");
+				this.produto = new Produto();
 				// return "/pages/listagem?faces-redirect=true";
 			}
 		} catch (Exception e) {

@@ -14,7 +14,7 @@
 	<f:metadata>
 		<f:viewParam
 			name="Linha Apenas para resolvendo o excesso de inicializção, porque Não sei explicar rsrs"></f:viewParam>
-		<f:event listener="#{produtoBean.ListarTodos()}" type="preRenderView"></f:event>
+		<f:event listener="#{produtoBean.ListarTodos}" type="preRenderView"></f:event>
 	</f:metadata>
 
 	<!-- Inicio do Conteudo -->
@@ -84,7 +84,7 @@
 
 									<h:column>
 										<f:facet name="header">
-											<h:outputText value="Ação" styleClass="thead-dark"
+											<h:outputText value="Baixar" styleClass="thead-dark"
 												style="width: 80px" />
 										</f:facet>
 										<p:commandButton icon="ui-icon-refresh"
