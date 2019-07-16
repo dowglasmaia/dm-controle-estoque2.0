@@ -44,36 +44,42 @@
 	<div class="container">
 		<div class="login-form">
 
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3>Entre com suas credencias</h3>
+			<h6 class="text-center mb-5">Seja bem Vindo!</h6>
+
+			<div class="card">
+
+				<div class="card-header text-center p-3">
+					<h2>Entre com suas credencias</h2>
 				</div>
 
 
-				<div class="panel-body">
+				<div class="card-body">
 					<p:messages autoUpdate="true" />
 
 					<h:form>
 						<div class="form-group">
-							<h:outputLabel value="CPF" styleClass="control-label" />
+							<h:outputLabel value="Usuario" styleClass="control-label" />
 							<p:inputText value="#{usuarioBean.usuario.cpf}"
-								styleClass="form-control" placeholder="Digite seu CPF = 120" />
+								styleClass="form-control" placeholder="entre com seu CPF  " />
 
 						</div>
 
 						<div class="form-group">
 							<h:outputLabel value="Senha" styleClass="control-label" />
 							<p:password value="#{usuarioBean.usuario.senha}"
-								styleClass="form-control" placeholder="Digite sua Senha = 120" />
+								styleClass="form-control" placeholder="entre com seua Senhas" />
 						</div>
 
 						<h:commandButton action="#{usuarioBean.logar()}"
-							value="Entra no Sistema" styleClass="btn-logar" />
-
-
+							value="Entra no Sistema"
+							styleClass="btn btn-outline-primary btn-block btn-lg" />
 
 					</h:form>
 				</div>
+			</div>
+			<div class="text-center mt-5">
+				<span>Para realizar os teste, entre com o usuario-<strong>
+						120,</strong> e senha <strong>120.</strong></span>
 			</div>
 		</div>
 	</div>
